@@ -216,7 +216,7 @@ Campos mapeados:
 ## Pendientes de Implementación
 
 - [ ] Ajustar payloads específicos RFCE/ACECF/ANECF según contrato final del microservicio
-- [ ] Firma digital de e-NCF (delegada al microservicio)
+- [ ] Firma digital de e-NCF (delegada al microservicio)  VER EL MICROSERVICIO   https://github.com/ithesk/l10n_do_e_cf_tests
 - [ ] Generación de XML según esquema DGII (delegada al microservicio)
 - [ ] Reportes estadísticos DGII
 
