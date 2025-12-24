@@ -1,0 +1,320 @@
+{
+    "ECF" : {
+        "Encabezado": {
+            "Version": "1.0",
+            "IdDoc": {
+                "TipoeCF": "34",
+                "eNCF": "E340000000002",
+                "IndicadorNotaCredito": "0",
+                "IndicadorMontoGravado": "0",
+                "TipoIngresos": "01",
+                "TipoPago": "1"},
+            "Emisor":{
+                "RNCEmisor": "130939616",
+                "RazonSocialEmisor": "DOCUMENTOS ELECTRONICOS DE 02",
+                "NombreComercial": "DOCUMENTOS ELECTRONICOS DE 02",
+                "DireccionEmisor": "AVE. ISABEL AGUIAR NO. 269, ZONA INDUSTRIAL DE HERRERA",
+                "Municipio": "010100",
+                "Provincia": "010000",
+                "TablaTelefonoEmisor": {
+                    "TelefonoEmisor" : [
+                    "809-472-7676",
+                    "809-491-1918"]
+                },
+                "CorreoEmisor": "DOCUMENTOSELECTRONICOSDE0612345678969789+9000000000000000000000000000001@123.COM",
+                "WebSite": "www.facturaelectronica.com",
+                "CodigoVendedor": "AA0000000100000000010000000002000000000300000000050000000006",
+                "NumeroFacturaInterna": "123456789016",
+                "NumeroPedidoInterno": "123456789016",
+                "ZonaVenta": "NORTE",
+                "FechaEmision": "02-04-2020"},
+            "Comprador":{
+                "RNCComprador": "131880681",
+                "RazonSocialComprador": "DOCUMENTOS ELECTRONICOS DE 03",
+                "ContactoComprador": "MARCOS LATIPLOL",
+                "CorreoComprador": "MARCOSLATIPLOL@KKKK.COM",
+                "DireccionComprador": "CALLE JACINTO DE LA CONCHA FELIZ ESQUINA 27 DE FEBRERO,FRENTE A DOMINO",
+                "MunicipioComprador": "010100",
+                "ProvinciaComprador": "010000",
+                "FechaEntrega": "10-10-2020",
+                "FechaOrdenCompra": "10-11-2018",
+                "NumeroOrdenCompra": "4500352238",
+                "CodigoInternoComprador": "10633440"},
+            "Totales":{
+                "MontoGravadoTotal": "480250.00",
+                "MontoGravadoI1": "480250.00",
+                "ITBIS1": "18",
+                "TotalITBIS": "86445.00",
+                "TotalITBIS1": "86445.00",
+                "MontoTotal": "566695.00"}},
+        "DetallesItems": {
+            "Item" : [
+            {
+                "NumeroLinea": 1,
+                "IndicadorFacturacion": 1,
+                "NombreItem": "BLOCK",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "100.00",
+                "UnidadMedida": "23",
+                "PrecioUnitarioItem": "450.0000",
+                    "DescuentoMonto": "200.00",
+                    "TablaSubDescuento": {
+                        "SubDescuento" : [
+                        {
+                            "TipoSubDescuento": "$",	
+                            "MontoSubDescuento": "200.00"
+                        }]
+                    },
+                    "RecargoMonto": "350.00",
+                    "TablaSubRecargo": {
+                        "SubRecargo" : [
+                        {
+                            "TipoSubRecargo": "$",	
+                            "MontoSubRecargo": "350.00"
+                        }]
+                    },
+                "MontoItem": "45150.00"
+            },
+            {
+                "NumeroLinea": 2,
+                "IndicadorFacturacion": 1,
+                "NombreItem": "VARILLAS",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "300.00",
+                "UnidadMedida": "23",
+                "PrecioUnitarioItem": "350.0000",
+                    "DescuentoMonto": "200.00",
+                    "TablaSubDescuento": {
+                        "SubDescuento" : [
+                        {
+                            "TipoSubDescuento": "$",	
+                            "MontoSubDescuento": "200.00"
+                        }]
+                    },
+                    "RecargoMonto": "350.00",
+                    "TablaSubRecargo": {
+                        "SubRecargo" : [
+                        {
+                            "TipoSubRecargo": "$",	
+                            "MontoSubRecargo": "350.00"
+                        }]
+                    },
+                "MontoItem": "105150.00"
+            },
+            {
+                "NumeroLinea": 3,
+                "IndicadorFacturacion": 1,
+                "NombreItem": "CINZ",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "200.00",
+                "UnidadMedida": "23",
+                "PrecioUnitarioItem": "425.0000",
+                    "DescuentoMonto": "200.00",
+                    "TablaSubDescuento": {
+                        "SubDescuento" : [
+                        {
+                            "TipoSubDescuento": "$",	
+                            "MontoSubDescuento": "200.00"
+                        }]
+                    },
+                    "RecargoMonto": "350.00",
+                    "TablaSubRecargo": {
+                        "SubRecargo" : [
+                        {
+                            "TipoSubRecargo": "$",	
+                            "MontoSubRecargo": "350.00"
+                        }]
+                    },
+                "MontoItem": "85150.00"
+            },
+            {
+                "NumeroLinea": 4,
+                "IndicadorFacturacion": 1,
+                "NombreItem": "CLAVOS DE MEDIA",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "50.00",
+                "UnidadMedida": "23",
+                "PrecioUnitarioItem": "550.0000",
+                    "DescuentoMonto": "200.00",
+                    "TablaSubDescuento": {
+                        "SubDescuento" : [
+                        {
+                            "TipoSubDescuento": "$",	
+                            "MontoSubDescuento": "200.00"
+                        }]
+                    },
+                    "RecargoMonto": "350.00",
+                    "TablaSubRecargo": {
+                        "SubRecargo" : [
+                        {
+                            "TipoSubRecargo": "$",	
+                            "MontoSubRecargo": "350.00"
+                        }]
+                    },
+                "MontoItem": "27650.00"
+            },
+            {
+                "NumeroLinea": 5,
+                "IndicadorFacturacion": 1,
+                "NombreItem": "CLAVOS DE CUARTA",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "50.00",
+                "UnidadMedida": "23",
+                "PrecioUnitarioItem": "325.0000",
+                    "DescuentoMonto": "200.00",
+                    "TablaSubDescuento": {
+                        "SubDescuento" : [
+                        {
+                            "TipoSubDescuento": "$",	
+                            "MontoSubDescuento": "200.00"
+                        }]
+                    },
+                    "RecargoMonto": "350.00",
+                    "TablaSubRecargo": {
+                        "SubRecargo" : [
+                        {
+                            "TipoSubRecargo": "$",	
+                            "MontoSubRecargo": "350.00"
+                        }]
+                    },
+                "MontoItem": "16400.00"
+            },
+            {
+                "NumeroLinea": 6,
+                "IndicadorFacturacion": 1,
+                "NombreItem": "ALAMBRE DULCE",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "60.00",
+                "UnidadMedida": "23",
+                "PrecioUnitarioItem": "250.0000",
+                    "DescuentoMonto": "200.00",
+                    "TablaSubDescuento": {
+                        "SubDescuento" : [
+                        {
+                            "TipoSubDescuento": "$",	
+                            "MontoSubDescuento": "200.00"
+                        }]
+                    },
+                    "RecargoMonto": "350.00",
+                    "TablaSubRecargo": {
+                        "SubRecargo" : [
+                        {
+                            "TipoSubRecargo": "$",	
+                            "MontoSubRecargo": "350.00"
+                        }]
+                    },
+                "MontoItem": "15150.00"
+            },
+            {
+                "NumeroLinea": 7,
+                "IndicadorFacturacion": 1,
+                "NombreItem": "CEMENTO BLANCO",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "250.00",
+                "UnidadMedida": "23",
+                "PrecioUnitarioItem": "250.0000",
+                    "DescuentoMonto": "200.00",
+                    "TablaSubDescuento": {
+                        "SubDescuento" : [
+                        {
+                            "TipoSubDescuento": "$",	
+                            "MontoSubDescuento": "200.00"
+                        }]
+                    },
+                    "RecargoMonto": "350.00",
+                    "TablaSubRecargo": {
+                        "SubRecargo" : [
+                        {
+                            "TipoSubRecargo": "$",	
+                            "MontoSubRecargo": "350.00"
+                        }]
+                    },
+                "MontoItem": "62650.00"
+            },
+            {
+                "NumeroLinea": 8,
+                "IndicadorFacturacion": 1,
+                "NombreItem": "CEMENTO GRIS",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "400.00",
+                "UnidadMedida": "23",
+                "PrecioUnitarioItem": "250.0000",
+                    "DescuentoMonto": "200.00",
+                    "TablaSubDescuento": {
+                        "SubDescuento" : [
+                        {
+                            "TipoSubDescuento": "$",	
+                            "MontoSubDescuento": "200.00"
+                        }]
+                    },
+                    "RecargoMonto": "350.00",
+                    "TablaSubRecargo": {
+                        "SubRecargo" : [
+                        {
+                            "TipoSubRecargo": "$",	
+                            "MontoSubRecargo": "350.00"
+                        }]
+                    },
+                "MontoItem": "100150.00"
+            },
+            {
+                "NumeroLinea": 9,
+                "IndicadorFacturacion": 1,
+                "NombreItem": "COLORANTE",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "30.00",
+                "UnidadMedida": "23",
+                "PrecioUnitarioItem": "250.0000",
+                    "DescuentoMonto": "200.00",
+                    "TablaSubDescuento": {
+                        "SubDescuento" : [
+                        {
+                            "TipoSubDescuento": "$",	
+                            "MontoSubDescuento": "200.00"
+                        }]
+                    },
+                    "RecargoMonto": "350.00",
+                    "TablaSubRecargo": {
+                        "SubRecargo" : [
+                        {
+                            "TipoSubRecargo": "$",	
+                            "MontoSubRecargo": "350.00"
+                        }]
+                    },
+                "MontoItem": "7650.00"
+            },
+            {
+                "NumeroLinea": 10,
+                "IndicadorFacturacion": 1,
+                "NombreItem": "TINER",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "60.00",
+                "UnidadMedida": "23",
+                "PrecioUnitarioItem": "250.0000",
+                    "DescuentoMonto": "200.00",
+                    "TablaSubDescuento": {
+                        "SubDescuento" : [
+                        {
+                            "TipoSubDescuento": "$",	
+                            "MontoSubDescuento": "200.00"
+                        }]
+                    },
+                    "RecargoMonto": "350.00",
+                    "TablaSubRecargo": {
+                        "SubRecargo" : [
+                        {
+                            "TipoSubRecargo": "$",	
+                            "MontoSubRecargo": "350.00"
+                        }]
+                    },
+                "MontoItem": "15150.00"
+            }]
+        },
+        "InformacionReferencia":{
+            "NCFModificado": "E310000000034",
+            "FechaNCFModificado": "01-04-2020",
+            "CodigoModificacion": "3",
+            "RazonModificacion": "Error en monto"},
+        "FechaHoraFirma": "13-12-2025 17:37:33"
+    }
+}

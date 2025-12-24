@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Heredar el reporte de factura estándar de Odoo -->
+    <template id="report_invoice_document_dgii" inherit_id="account.report_invoice_document">
+
+        <!-- OCULTAR el número de factura de Odoo (INV/2024/0001) -->
+        <xpath expr="//t[@t-set='layout_document_title']//span[@t-field='o.name']" position="replace">
+            <!-- Oculto - usaremos solo el NCF -->
+        </xpath>
+
+        <!-- Agregar RNC a la dirección de la empresa en el header -->
+        <xpath expr="//t[@t-set='forced_vat']" position="after">
+            <t t-set="company_address">
+                <div t-field="o.company_id.partner_id"
+                     t-options='{"widget": "contact", "fields": ["address"], "no_marker": True}'/>
+                <div t-if="o.company_id.vat" style="margin-top: 5px;">
+                    <strong>RNC:</strong> <span t-field="o.company_id.vat"/>
+                </div>
+            </t>
+        </xpath>
+
+        <!-- Reorganizar información del cliente - mover arriba -->
+        <xpath expr="//div[@class='row']" position="replace">
+            <div class="row" t-if="o.move_type in ['out_invoice', 'out_refund']">
+                <!-- Columna izquierda: Datos del Cliente -->
+                <div class="col-6">
+                    <strong style="font-size: 12px;">CLIENTE:</strong>
+                    <div style="margin-top: 5px;">
+                        <div style="font-size: 11px; font-weight: bold;">
+                            <span t-field="o.partner_id.name"/>
+                        </div>
+                        <div style="font-size: 10px; margin-top: 3px;">
+                            <t t-if="o.partner_id.vat">
+                                <strong>RNC:</strong> <span t-field="o.partner_id.vat"/>
+                            </t>
+                            <t t-else="">
+                                <span style="color: #666; font-style: italic;">Consumidor Final</span>
+                            </t>
+                        </div>
+                        <div style="font-size: 10px; margin-top: 3px;" t-if="o.partner_id.street">
+                            <span t-field="o.partner_id.street"/>
+                            <span t-if="o.partner_id.city">, <span t-field="o.partner_id.city"/></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna derecha: Información DGII -->
+                <div class="col-6" t-if="o.encf">
+                    <div style="text-align: right; border: 2px solid #000; padding: 10px; background-color: #f8f8f8;">
+                        <!-- Tipo de Comprobante -->
+                        <div style="font-size: 13px; font-weight: bold; margin-bottom: 8px;">
+                            <t t-set="tipo_codigo" t-value="o.x_tipo_ecf_manual or (o.encf[1:3] if o.encf and len(o.encf) >= 3 else '32')"/>
+                            <t t-if="tipo_codigo == '31'">FACTURA DE CRÉDITO FISCAL</t>
+                            <t t-elif="tipo_codigo == '32'">FACTURA DE CONSUMO</t>
+                            <t t-elif="tipo_codigo == '33'">NOTA DE DÉBITO</t>
+                            <t t-elif="tipo_codigo == '34'">NOTA DE CRÉDITO</t>
+                            <t t-elif="tipo_codigo == '44'">RÉGIMEN ESPECIAL</t>
+                            <t t-elif="tipo_codigo == '45'">COMPROBANTE GUBERNAMENTAL</t>
+                            <t t-else="">COMPROBANTE FISCAL</t>
+                        </div>
+
+                        <!-- e-NCF -->
+                        <div style="font-size: 14px; margin-bottom: 8px; font-weight: bold;">
+                            NCF: <span t-esc="o.encf" style="letter-spacing: 1px;"/>
+                        </div>
+
+                        <!-- Fechas -->
+                        <div style="font-size: 10px; color: #333; margin-top: 5px;">
+                            <div>
+                                <strong>Fecha Emisión:</strong>
+                                <span t-field="o.invoice_date" t-options="{'widget': 'date'}"/>
+                            </div>
+                            <div t-if="o.invoice_date_due" style="margin-top: 2px;">
+                                <strong>Fecha Límite:</strong>
+                                <span t-field="o.invoice_date_due" t-options="{'widget': 'date'}"/>
+                            </div>
+                            <t t-set="rango" t-value="o.env['dgii.ecf.sequence.range'].search([('tipo_ecf', '=', tipo_codigo), ('estado', '=', 'activo')], limit=1)"/>
+                            <div t-if="rango" style="margin-top: 2px; color: #666;">
+                                <strong>Válido hasta:</strong>
+                                <span t-field="rango.fecha_vencimiento" t-options="{'widget': 'date'}"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+
+        <!-- OCULTAR el bloque de informations original (fechas duplicadas) -->
+        <xpath expr="//div[@id='informations']" position="attributes">
+            <attribute name="style">display: none;</attribute>
+        </xpath>
+
+        <!-- Agregar QR de firma digital después del total -->
+        <xpath expr="//div[@id='total']" position="after">
+            <div class="row mt-4" t-if="o.encf" style="page-break-inside: avoid;">
+                <div class="col-12 text-center">
+                    <!-- QR Code de Verificación DGII -->
+                    <t t-set="qr_url" t-value="'https://ecf.dgii.gov.do/consultacf/consultar?rncemisor=%s&amp;rnccomprador=%s&amp;encf=%s&amp;monto=%.2f' % (o.company_id.vat or '', o.partner_id.vat or '', o.encf, o.amount_total)"/>
+                    <div style="margin-bottom: 10px;">
+                        <img t-att-src="'/report/barcode/QR/%s' % qr_url"
+                             style="width: 120px; height: 120px; border: 1px solid #ccc;"
+                             alt="QR Verificación DGII"/>
+                    </div>
+                    <div style="font-size: 9px; color: #666;">
+                        Escanee para verificar en <strong>ecf.dgii.gov.do</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pie Legal DGII -->
+            <div class="row mt-3" t-if="o.encf" style="border-top: 1px solid #ccc; padding-top: 10px; page-break-inside: avoid;">
+                <div class="col-12 text-center" style="font-size: 9px; color: #666;">
+                    <p style="margin: 2px 0;">
+                        <strong>COMPROBANTE FISCAL ELECTRÓNICO</strong> - Norma General 06-2018 DGII
+                    </p>
+                    <p style="margin: 2px 0;">
+                        NCF: <span t-esc="o.encf"/> |
+                        Emisión: <span t-field="o.create_date" t-options="{'widget': 'datetime', 'format': 'dd/MM/yyyy HH:mm:ss'}"/>
+                    </p>
+                </div>
+            </div>
+        </xpath>
+
+    </template>
+</odoo>

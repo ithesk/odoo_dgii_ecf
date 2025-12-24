@@ -1,0 +1,247 @@
+{
+    "ECF" : {
+        "Encabezado": {
+            "Version": "1.0",
+            "IdDoc": {
+                "TipoeCF": "44",
+                "eNCF": "E440000000010",
+                "FechaVencimientoSecuencia": "31-12-2025",
+                "TipoIngresos": "01",
+                "TipoPago": "1",
+                "TablaFormasPago": {
+                    "FormaDePago" : [
+                    {
+                        "FormaPago": 1,	
+                        "MontoPago": "170150.00"
+                    }]
+                }},
+            "Emisor":{
+                "RNCEmisor": "130939616",
+                "RazonSocialEmisor": "DOCUMENTOS ELECTRONICOS DE 02",
+                "NombreComercial": "DOCUMENTOS ELECTRONICOS DE 02",
+                "DireccionEmisor": "AVE. ISABEL AGUIAR NO. 269, ZONA INDUSTRIAL DE HERRERA",
+                "Municipio": "010100",
+                "Provincia": "010000",
+                "TablaTelefonoEmisor": {
+                    "TelefonoEmisor" : [
+                    "809-472-7676",
+                    "809-491-1918"]
+                },
+                "CorreoEmisor": "DOCUMENTOSELECTRONICOSDE0612345678969789+9000000000000000000000000000001@123.COM",
+                "WebSite": "www.facturaelectronica.com",
+                "CodigoVendedor": "AA0000000100000000010000000002000000000300000000050000000006",
+                "NumeroFacturaInterna": "123456789016",
+                "NumeroPedidoInterno": "123456789016",
+                "ZonaVenta": "NORTE",
+                "FechaEmision": "01-04-2020"},
+            "Comprador":{
+                "RNCComprador": "131880681",
+                "RazonSocialComprador": "DOCUMENTOS ELECTRONICOS DE 03",
+                "ContactoComprador": "MARCOS LATIPLOL",
+                "CorreoComprador": "MARCOSLATIPLOL@KKKK.COM",
+                "DireccionComprador": "CALLE JACINTO DE LA CONCHA FELIZ ESQUINA 27 DE FEBRERO,FRENTE A DOMINO",
+                "MunicipioComprador": "010100",
+                "ProvinciaComprador": "010000",
+                "FechaEntrega": "10-10-2020",
+                "FechaOrdenCompra": "10-11-2018",
+                "NumeroOrdenCompra": "4500352238",
+                "CodigoInternoComprador": "10633440"},
+            "Transporte":{
+                "Conductor": "Rafael Perez",
+                "DocumentoTransporte": "363636",
+                "Ficha": "J-1234",
+                "Placa": "A639689",
+                "RutaTransporte": "B-Sur",
+                "ZonaTransporte": "Interior-1",
+                "NumeroAlbaran": "3634258"},
+            "Totales":{
+                "MontoExento": "170150.00",
+                "MontoTotal": "170150.00",
+                "MontoPeriodo": "170150.00",
+                "ValorPagar": "170150.00"}},
+        "DetallesItems": {
+            "Item" : [
+            {
+                "NumeroLinea": 1,
+                "IndicadorFacturacion": 4,
+                "NombreItem": "ZAPATOS",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "40.00",
+                "UnidadMedida": "6",
+                "PrecioUnitarioItem": "350.0000",
+                    "DescuentoMonto": "500.00",
+                    "TablaSubDescuento": {
+                        "SubDescuento" : [
+                        {
+                            "TipoSubDescuento": "$",	
+                            "MontoSubDescuento": "500.00"
+                        }]
+                    },
+                "MontoItem": "13500.00"
+            },
+            {
+                "NumeroLinea": 2,
+                "IndicadorFacturacion": 4,
+                "NombreItem": "CARTERAS",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "40.00",
+                "UnidadMedida": "6",
+                "PrecioUnitarioItem": "450.0000",
+                    "DescuentoMonto": "500.00",
+                    "TablaSubDescuento": {
+                        "SubDescuento" : [
+                        {
+                            "TipoSubDescuento": "$",	
+                            "MontoSubDescuento": "500.00"
+                        }]
+                    },
+                "MontoItem": "17500.00"
+            },
+            {
+                "NumeroLinea": 3,
+                "IndicadorFacturacion": 4,
+                "NombreItem": "BLUSAS",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "50.00",
+                "UnidadMedida": "6",
+                "PrecioUnitarioItem": "550.0000",
+                    "DescuentoMonto": "500.00",
+                    "TablaSubDescuento": {
+                        "SubDescuento" : [
+                        {
+                            "TipoSubDescuento": "$",	
+                            "MontoSubDescuento": "500.00"
+                        }]
+                    },
+                "MontoItem": "27000.00"
+            },
+            {
+                "NumeroLinea": 4,
+                "IndicadorFacturacion": 4,
+                "NombreItem": "CALCETINES",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "25.00",
+                "UnidadMedida": "6",
+                "PrecioUnitarioItem": "350.0000",
+                    "DescuentoMonto": "500.00",
+                    "TablaSubDescuento": {
+                        "SubDescuento" : [
+                        {
+                            "TipoSubDescuento": "$",	
+                            "MontoSubDescuento": "500.00"
+                        }]
+                    },
+                "MontoItem": "8250.00"
+            },
+            {
+                "NumeroLinea": 5,
+                "IndicadorFacturacion": 4,
+                "NombreItem": "TIRANTES",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "35.00",
+                "UnidadMedida": "6",
+                "PrecioUnitarioItem": "250.0000",
+                    "DescuentoMonto": "500.00",
+                    "TablaSubDescuento": {
+                        "SubDescuento" : [
+                        {
+                            "TipoSubDescuento": "$",	
+                            "MontoSubDescuento": "500.00"
+                        }]
+                    },
+                "MontoItem": "8250.00"
+            },
+            {
+                "NumeroLinea": 6,
+                "IndicadorFacturacion": 4,
+                "NombreItem": "TENIS",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "34.00",
+                "UnidadMedida": "6",
+                "PrecioUnitarioItem": "350.0000",
+                    "DescuentoMonto": "500.00",
+                    "TablaSubDescuento": {
+                        "SubDescuento" : [
+                        {
+                            "TipoSubDescuento": "$",	
+                            "MontoSubDescuento": "500.00"
+                        }]
+                    },
+                "MontoItem": "11400.00"
+            },
+            {
+                "NumeroLinea": 7,
+                "IndicadorFacturacion": 4,
+                "NombreItem": "CALIZOS",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "50.00",
+                "UnidadMedida": "6",
+                "PrecioUnitarioItem": "400.0000",
+                    "DescuentoMonto": "500.00",
+                    "TablaSubDescuento": {
+                        "SubDescuento" : [
+                        {
+                            "TipoSubDescuento": "$",	
+                            "MontoSubDescuento": "500.00"
+                        }]
+                    },
+                "MontoItem": "19500.00"
+            },
+            {
+                "NumeroLinea": 8,
+                "IndicadorFacturacion": 4,
+                "NombreItem": "BOLZOS",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "60.00",
+                "UnidadMedida": "6",
+                "PrecioUnitarioItem": "350.0000",
+                    "DescuentoMonto": "500.00",
+                    "TablaSubDescuento": {
+                        "SubDescuento" : [
+                        {
+                            "TipoSubDescuento": "$",	
+                            "MontoSubDescuento": "500.00"
+                        }]
+                    },
+                "MontoItem": "20500.00"
+            },
+            {
+                "NumeroLinea": 9,
+                "IndicadorFacturacion": 4,
+                "NombreItem": "MEDIAS",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "45.00",
+                "UnidadMedida": "6",
+                "PrecioUnitarioItem": "450.0000",
+                    "DescuentoMonto": "500.00",
+                    "TablaSubDescuento": {
+                        "SubDescuento" : [
+                        {
+                            "TipoSubDescuento": "$",	
+                            "MontoSubDescuento": "500.00"
+                        }]
+                    },
+                "MontoItem": "19750.00"
+            },
+            {
+                "NumeroLinea": 10,
+                "IndicadorFacturacion": 4,
+                "NombreItem": "SUETER",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "50.00",
+                "UnidadMedida": "6",
+                "PrecioUnitarioItem": "500.0000",
+                    "DescuentoMonto": "500.00",
+                    "TablaSubDescuento": {
+                        "SubDescuento" : [
+                        {
+                            "TipoSubDescuento": "$",	
+                            "MontoSubDescuento": "500.00"
+                        }]
+                    },
+                "MontoItem": "24500.00"
+            }]
+        },
+        "FechaHoraFirma": "13-12-2025 17:41:20"
+    }
+}

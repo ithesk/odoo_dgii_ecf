@@ -1,0 +1,100 @@
+{
+    "ECF" : {
+        "Encabezado": {
+            "Version": "1.0",
+            "IdDoc": {
+                "TipoeCF": "31",
+                "eNCF": "E310000000034",
+                "FechaVencimientoSecuencia": "31-12-2025",
+                "TipoIngresos": "01",
+                "TipoPago": "1"},
+            "Emisor":{
+                "RNCEmisor": "130939616",
+                "RazonSocialEmisor": "DOCUMENTOS ELECTRONICOS DE 02",
+                "NombreComercial": "DOCUMENTOS ELECTRONICOS DE 02",
+                "DireccionEmisor": "AVE. ISABEL AGUIAR NO. 269, ZONA INDUSTRIAL DE HERRERA",
+                "Municipio": "010100",
+                "Provincia": "010000",
+                "TablaTelefonoEmisor": {
+                    "TelefonoEmisor" : [
+                    "809-472-7676",
+                    "809-491-1918"]
+                },
+                "CorreoEmisor": "DOCUMENTOSELECTRONICOSDE0612345678969789+9000000000000000000000000000001@123.COM",
+                "WebSite": "www.facturaelectronica.com",
+                "CodigoVendedor": "AA0000000100000000010000000002000000000300000000050000000006",
+                "NumeroFacturaInterna": "123456789016",
+                "NumeroPedidoInterno": "123456789016",
+                "ZonaVenta": "NORTE",
+                "FechaEmision": "01-04-2020"},
+            "Comprador":{
+                "RNCComprador": "131880681",
+                "RazonSocialComprador": "DOCUMENTOS ELECTRONICOS DE 03",
+                "ContactoComprador": "MARCOS LATIPLOL",
+                "CorreoComprador": "MARCOSLATIPLOL@KKKK.COM",
+                "DireccionComprador": "CALLE JACINTO DE LA CONCHA FELIZ ESQUINA 27 DE FEBRERO,FRENTE A DOMINO",
+                "MunicipioComprador": "010100",
+                "ProvinciaComprador": "010000",
+                "FechaEntrega": "10-10-2020",
+                "FechaOrdenCompra": "10-11-2018",
+                "NumeroOrdenCompra": "4500352238",
+                "CodigoInternoComprador": "10633440"},
+            "Totales":{
+                "MontoExento": "25000000.00",
+                "MontoTotal": "25000000.00"}},
+        "DetallesItems": {
+            "Item" : [
+            {
+                "NumeroLinea": 1,
+                "IndicadorFacturacion": 4,
+                "NombreItem": "Carnes paq 2lb",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "5.00",
+                "UnidadMedida": "31",
+                "PrecioUnitarioItem": "1000000.0000",
+                "MontoItem": "5000000.00"
+            },
+            {
+                "NumeroLinea": 2,
+                "IndicadorFacturacion": 4,
+                "NombreItem": "Carnes paq 2lb",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "5.00",
+                "UnidadMedida": "31",
+                "PrecioUnitarioItem": "1000000.0000",
+                "MontoItem": "5000000.00"
+            },
+            {
+                "NumeroLinea": 3,
+                "IndicadorFacturacion": 4,
+                "NombreItem": "Carnes paq 2lb",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "5.00",
+                "UnidadMedida": "31",
+                "PrecioUnitarioItem": "1000000.0000",
+                "MontoItem": "5000000.00"
+            },
+            {
+                "NumeroLinea": 4,
+                "IndicadorFacturacion": 4,
+                "NombreItem": "Carnes paq 2lb",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "5.00",
+                "UnidadMedida": "31",
+                "PrecioUnitarioItem": "1000000.0000",
+                "MontoItem": "5000000.00"
+            },
+            {
+                "NumeroLinea": 5,
+                "IndicadorFacturacion": 4,
+                "NombreItem": "Carnes paq 2lb",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "5.00",
+                "UnidadMedida": "31",
+                "PrecioUnitarioItem": "1000000.0000",
+                "MontoItem": "5000000.00"
+            }]
+        },
+        "FechaHoraFirma": "13-12-2025 16:16:40"
+    }
+}

@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ========== EXTENSIÓN VISTA FORMULARIO DE FACTURA ========== -->
+    <record id="view_account_move_form_dgii" model="ir.ui.view">
+        <field name="name">account.move.form.dgii</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <!-- Botón de logs de API en button_box -->
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_view_api_logs" type="object"
+                        class="oe_stat_button" icon="fa-history"
+                        invisible="api_log_count == 0">
+                    <field name="api_log_count" widget="statinfo" string="Logs API"/>
+                </button>
+            </xpath>
+
+            <!-- Agregar botones en el header -->
+            <xpath expr="//header" position="inside">
+                <button name="action_generate_encf" string="Generar e-NCF" type="object"
+                        invisible="encf or state != 'posted' or move_type not in ['out_invoice', 'out_refund']"
+                        class="btn-primary" primary="1"
+                        groups="account.group_account_invoice"/>
+                <button name="action_send_to_dgii" string="Enviar a DGII" type="object"
+                        invisible="not encf or state != 'posted' or move_type not in ['out_invoice', 'out_refund']"
+                        class="btn-success"
+                        groups="account.group_account_invoice"/>
+                <button name="action_check_dgii_status" string="Consultar Estado DGII" type="object"
+                        invisible="not dgii_track_id"
+                        class="btn-secondary"
+                        groups="account.group_account_invoice"/>
+                <!-- Botón para crear Nota de Crédito e-CF (34) desde factura -->
+                <button name="action_create_credit_note_ecf" string="Crear NC e-CF (34)" type="object"
+                        invisible="move_type != 'out_invoice' or state != 'posted' or not encf"
+                        class="btn-warning"
+                        groups="account.group_account_invoice"
+                        title="Crear Nota de Crédito e-CF tipo 34 referenciando esta factura"/>
+                <!-- Botón para aplicar créditos NC existentes -->
+                <button name="action_apply_credit" string="Aplicar Crédito NC" type="object"
+                        invisible="move_type != 'out_invoice' or state != 'posted'"
+                        class="btn-secondary"
+                        groups="account.group_account_invoice"/>
+            </xpath>
+
+            <!-- Agregar campo para seleccionar tipo de comprobante después del partner -->
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="x_tipo_ecf_manual"
+                       invisible="move_type not in ['out_invoice', 'out_refund']"
+                       readonly="state == 'posted'"
+                       placeholder="Automático según cliente"/>
+            </xpath>
+
+            <!-- Agregar campo e-NCF después del campo de nombre/número -->
+            <xpath expr="//field[@name='name']" position="after">
+                <label for="encf" string="e-NCF"
+                       invisible="move_type not in ['out_invoice', 'out_refund'] or not encf"
+                       class="o_form_label"/>
+                <div invisible="move_type not in ['out_invoice', 'out_refund'] or not encf">
+                    <field name="encf" readonly="1" nolabel="1"
+                           class="oe_inline"
+                           style="font-size: 14px; font-weight: normal;"/>
+                </div>
+            </xpath>
+
+            <!-- Agregar pestaña DGII -->
+            <xpath expr="//notebook" position="inside">
+                <page string="DGII - Info Fiscal" name="dgii_info"
+                      invisible="move_type not in ['out_invoice', 'out_refund']">
+                    <group>
+                        <group string="Comprobante Fiscal Electrónico">
+                            <field name="encf" readonly="1"/>
+                            <field name="encf_state" readonly="1"/>
+                            <field name="dgii_estado" readonly="1" widget="statusbar"/>
+                            <field name="dgii_track_id" readonly="1"/>
+                            <field name="x_tipo_ingresos"/>
+                            <field name="x_tipo_pago" readonly="1"/>
+                        </group>
+                        <group string="Referencia NC/ND"
+                               invisible="move_type != 'out_refund'">
+                            <field name="x_ref_move_id"
+                                   options="{'no_create': True}"
+                                   placeholder="Seleccione factura original"/>
+                            <field name="x_ncf_modificado"
+                                   placeholder="E310000000001"/>
+                            <field name="x_fecha_ncf_modificado"/>
+                            <field name="x_codigo_modificacion"/>
+                            <field name="x_razon_modificacion"
+                                   placeholder="Motivo de la modificación"/>
+                            <field name="x_indicador_nota_credito" readonly="1"/>
+                        </group>
+                    </group>
+
+                    <group>
+                        <group string="Estado">
+                            <div class="alert alert-success" role="alert"
+                                 invisible="not encf">
+                                <p><strong>✓ e-NCF Generado Correctamente</strong></p>
+                                <p>Número: <field name="encf" readonly="1" nolabel="1"/></p>
+                            </div>
+
+                            <div class="alert alert-warning" role="alert"
+                                 invisible="encf or state != 'posted'">
+                                <p><strong>⚠️ e-NCF Pendiente de Generar</strong></p>
+                                <p>Esta factura aún no tiene un e-NCF asignado.</p>
+                                <p>Haga clic en "Generar e-NCF" para crear el comprobante.</p>
+                            </div>
+
+                            <div class="alert alert-info" role="alert"
+                                 invisible="encf or state == 'posted'">
+                                <p><strong>ℹ️ Información</strong></p>
+                                <p>El e-NCF se generará automáticamente al confirmar la factura
+                                   si el diario está configurado correctamente.</p>
+                            </div>
+                        </group>
+                        <group string="Respuesta DGII" invisible="not dgii_track_id">
+                            <field name="dgii_security_code" readonly="1"/>
+                            <field name="dgii_qr_url" readonly="1" widget="url"/>
+                            <field name="dgii_response_message" readonly="1"/>
+                        </group>
+                    </group>
+
+                    <!-- Sección de Crédito para NC tipo 34 -->
+                    <group string="Información de Crédito" invisible="move_type != 'out_refund'">
+                        <group>
+                            <field name="credit_state" readonly="1" widget="badge"
+                                   decoration-success="credit_state == 'available'"
+                                   decoration-warning="credit_state == 'partial'"
+                                   decoration-muted="credit_state in ('consumed', 'no_credit')"/>
+                            <field name="credit_available" readonly="1"/>
+                        </group>
+                    </group>
+
+                    <!-- Sección de Créditos Aplicados para Facturas -->
+                    <group string="Créditos de NC Aplicados" invisible="move_type != 'out_invoice'">
+                        <field name="applied_credit_total" readonly="1"/>
+                        <field name="applied_credit_ids" readonly="1" nolabel="1"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- ========== EXTENSIÓN VISTA DE LISTA DE FACTURAS ========== -->
+    <record id="view_account_move_tree_dgii" model="ir.ui.view">
+        <field name="name">account.move.tree.dgii</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_invoice_tree"/>
+        <field name="arch" type="xml">
+            <!-- Agregar columna e-NCF en la lista -->
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="encf" optional="show"
+                       string="e-NCF"/>
+                <field name="dgii_estado" optional="show" widget="badge"
+                       decoration-warning="dgii_estado in ['pending','draft']"
+                       decoration-success="dgii_estado == 'accepted'"
+                       decoration-danger="dgii_estado == 'rejected'"/>
+                <field name="dgii_track_id" optional="hide"/>
+                <field name="encf_state" optional="hide" widget="badge"
+                       decoration-warning="encf_state == 'pending'"
+                       decoration-success="encf_state == 'generated'"
+                       decoration-info="encf_state == 'sent'"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- ========== VISTA DE BÚSQUEDA EXTENDIDA ========== -->
+    <record id="view_account_move_filter_dgii" model="ir.ui.view">
+        <field name="name">account.move.filter.dgii</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+        <field name="arch" type="xml">
+            <filter name="draft" position="after">
+                <separator/>
+                <filter string="Con e-NCF" name="with_encf"
+                        domain="[('encf', '!=', False)]"/>
+                <filter string="Sin e-NCF" name="without_encf"
+                        domain="[('encf', '=', False), ('state', '=', 'posted'), ('move_type', 'in', ['out_invoice', 'out_refund'])]"/>
+                <filter string="Pendiente Envío DGII" name="pending_dgii"
+                        domain="[('dgii_estado', 'in', ['draft', 'pending'])]"/>
+                <filter string="DGII Aceptado" name="accepted_dgii"
+                        domain="[('dgii_estado', '=', 'accepted')]"/>
+            </filter>
+            <field name="partner_id" position="after">
+                <field name="encf" string="e-NCF"
+                       filter_domain="[('encf', 'ilike', self)]"/>
+                <field name="dgii_track_id" string="Track ID"
+                       filter_domain="[('dgii_track_id', 'ilike', self)]"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- ========== MENÚ PARA FACTURAS EN SECCIÓN DGII ========== -->
+    <menuitem id="menu_dgii_operations"
+              name="Operaciones"
+              parent="odoo_dgii_ecf.menu_dgii_root"
+              sequence="5"/>
+
+    <menuitem id="menu_dgii_invoices"
+              name="Facturas con e-NCF"
+              parent="menu_dgii_operations"
+              action="account.action_move_out_invoice_type"
+              sequence="10"/>
+</odoo>

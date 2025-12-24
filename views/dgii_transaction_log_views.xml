@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ========== VISTA FORMULARIO ========== -->
+    <record id="view_dgii_transaction_log_form" model="ir.ui.view">
+        <field name="name">dgii.transaction.log.form</field>
+        <field name="model">dgii.transaction.log</field>
+        <field name="arch" type="xml">
+            <form string="Log de Transacción DGII" create="false">
+                <header>
+                    <button name="action_view_move" string="Ver Factura" type="object"
+                            class="btn-primary" icon="fa-file-text-o"
+                            invisible="not move_id"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="operation_type" readonly="1"/>
+                        </h1>
+                        <h3>
+                            <field name="encf" readonly="1" placeholder="e-NCF"/>
+                        </h3>
+                    </div>
+
+                    <group>
+                        <group string="Información General">
+                            <field name="move_id" readonly="1"/>
+                            <field name="state" readonly="1"/>
+                            <field name="create_date" readonly="1"/>
+                            <field name="user_id" readonly="1"/>
+                            <field name="duration_ms" readonly="1"/>
+                        </group>
+                        <group string="Datos DGII">
+                            <field name="dgii_track_id" readonly="1"/>
+                            <field name="dgii_status" readonly="1"/>
+                            <field name="request_url" readonly="1"/>
+                            <field name="request_method" readonly="1"/>
+                            <field name="response_status_code" readonly="1"/>
+                        </group>
+                    </group>
+
+                    <group string="Error" invisible="not error_message">
+                        <field name="error_message" readonly="1" nolabel="1"/>
+                    </group>
+
+                    <notebook>
+                        <page string="JSON Enviado" name="request">
+                            <field name="request_payload_formatted" readonly="1"/>
+                        </page>
+                        <page string="Respuesta API" name="response">
+                            <field name="response_body_formatted" readonly="1"/>
+                        </page>
+                        <page string="Mensajes DGII" name="messages"
+                              invisible="not dgii_messages">
+                            <field name="dgii_messages" readonly="1" nolabel="1"/>
+                        </page>
+                        <page string="Notas" name="notes">
+                            <field name="notes" readonly="1" nolabel="1"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ========== VISTA LISTA ========== -->
+    <record id="view_dgii_transaction_log_tree" model="ir.ui.view">
+        <field name="name">dgii.transaction.log.tree</field>
+        <field name="model">dgii.transaction.log</field>
+        <field name="arch" type="xml">
+            <list string="Logs DGII" create="false" default_order="create_date desc">
+                <field name="create_date" string="Fecha"/>
+                <field name="operation_type"/>
+                <field name="encf"/>
+                <field name="move_id"/>
+                <field name="state"/>
+                <field name="response_status_code" string="HTTP"/>
+                <field name="dgii_track_id"/>
+                <field name="duration_ms" string="ms"/>
+                <field name="error_message" string="Error" optional="show"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ========== ACCIÓN ========== -->
+    <record id="action_dgii_transaction_log" model="ir.actions.act_window">
+        <field name="name">Log de Transacciones</field>
+        <field name="res_model">dgii.transaction.log</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No hay logs de transacciones DGII
+            </p>
+        </field>
+    </record>
+
+    <!-- Acción para ver solo errores -->
+    <record id="action_dgii_transaction_log_errors" model="ir.actions.act_window">
+        <field name="name">Errores DGII</field>
+        <field name="res_model">dgii.transaction.log</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[('state', '=', 'error')]</field>
+    </record>
+
+    <!-- ========== MENÚS TÉCNICOS ========== -->
+    <menuitem id="menu_dgii_technical"
+              name="Técnico"
+              parent="odoo_dgii_ecf.menu_dgii_root"
+              sequence="90"
+              groups="base.group_system"/>
+
+    <menuitem id="menu_dgii_transaction_log"
+              name="Log de Transacciones"
+              parent="menu_dgii_technical"
+              action="action_dgii_transaction_log"
+              sequence="10"/>
+
+    <menuitem id="menu_dgii_transaction_log_errors"
+              name="Errores"
+              parent="menu_dgii_technical"
+              action="action_dgii_transaction_log_errors"
+              sequence="20"/>
+
+</odoo>

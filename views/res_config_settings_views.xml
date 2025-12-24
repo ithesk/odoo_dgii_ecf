@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_dgii_ecf" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.dgii.ecf</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app string="DGII e-CF" name="dgii_ecf">
+                    <block title="Microservicio DGII">
+                        <setting>
+                            <label for="dgii_ecf_api_base_url" string="URL Base del Microservicio"/>
+                            <field name="dgii_ecf_api_base_url" placeholder="http://localhost:3000/api"/>
+                        </setting>
+                        <setting>
+                            <label for="dgii_ecf_api_key" string="API Key"/>
+                            <field name="dgii_ecf_api_key" password="True" placeholder="Opcional"/>
+                        </setting>
+                        <setting>
+                            <label for="dgii_ecf_environment" string="Ambiente DGII"/>
+                            <div class="text-muted">
+                                test = TesteCF, cert = CerteCF, prod = eCF (producción)
+                            </div>
+                            <field name="dgii_ecf_environment"/>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>

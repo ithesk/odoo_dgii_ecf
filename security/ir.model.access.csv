@@ -1,0 +1,16 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_dgii_ecf_tipo_all,dgii.ecf.tipo.all,model_dgii_ecf_tipo,base.group_user,1,0,0,0
+access_dgii_ecf_tipo_manager,dgii.ecf.tipo.manager,model_dgii_ecf_tipo,account.group_account_manager,1,1,1,1
+access_dgii_ecf_sequence_range_user,dgii.ecf.sequence.range.user,model_dgii_ecf_sequence_range,account.group_account_invoice,1,0,0,0
+access_dgii_ecf_sequence_range_manager,dgii.ecf.sequence.range.manager,model_dgii_ecf_sequence_range,account.group_account_manager,1,1,1,1
+access_dgii_ecf_sequence_range_accountant,dgii.ecf.sequence.range.accountant,model_dgii_ecf_sequence_range,account.group_account_user,1,1,1,0
+access_dgii_transaction_log_admin,dgii.transaction.log.admin,model_dgii_transaction_log,base.group_system,1,1,1,1
+access_dgii_transaction_log_manager,dgii.transaction.log.manager,model_dgii_transaction_log,account.group_account_manager,1,1,1,0
+access_l10n_do_ecf_credit_user,l10n_do.ecf_credit.user,model_l10n_do_ecf_credit,account.group_account_invoice,1,0,0,0
+access_l10n_do_ecf_credit_accountant,l10n_do.ecf_credit.accountant,model_l10n_do_ecf_credit,account.group_account_user,1,1,0,0
+access_l10n_do_ecf_credit_manager,l10n_do.ecf_credit.manager,model_l10n_do_ecf_credit,account.group_account_manager,1,1,1,1
+access_l10n_do_ecf_credit_application_user,l10n_do.ecf_credit_application.user,model_l10n_do_ecf_credit_application,account.group_account_invoice,1,0,0,0
+access_l10n_do_ecf_credit_application_accountant,l10n_do.ecf_credit_application.accountant,model_l10n_do_ecf_credit_application,account.group_account_user,1,1,0,0
+access_l10n_do_ecf_credit_application_manager,l10n_do.ecf_credit_application.manager,model_l10n_do_ecf_credit_application,account.group_account_manager,1,1,1,1
+access_apply_credit_wizard,account.move.apply.credit.wizard,model_account_move_apply_credit_wizard,account.group_account_invoice,1,1,1,1
+access_create_credit_note_ecf_wizard,account.move.create.credit.note.ecf.wizard,model_account_move_create_credit_note_ecf_wizard,account.group_account_invoice,1,1,1,1

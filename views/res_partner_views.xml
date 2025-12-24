@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ========== EXTENSIÓN VISTA FORMULARIO DE CONTACTO ========== -->
+    <record id="view_res_partner_form_dgii" model="ir.ui.view">
+        <field name="name">res.partner.form.dgii</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <!-- Agregar botón de validación RNC en el header -->
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_validate_rnc" type="object"
+                        class="oe_stat_button" icon="fa-check-circle"
+                        invisible="not vat"
+                        help="Validar RNC en DGII y autocompletar datos">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_text" invisible="not x_rnc_validado">
+                            RNC Validado
+                        </span>
+                        <span class="o_stat_text" invisible="x_rnc_validado">
+                            Validar RNC
+                        </span>
+                    </div>
+                </button>
+            </xpath>
+
+            <!-- Agregar campo Tipo de Contribuyente como selector discreto después del VAT -->
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="x_tipo_contribuyente" widget="selection"
+                       class="w-auto"
+                       style="max-width: 200px;"
+                       help="Tipo de comprobante fiscal"/>
+            </xpath>
+
+            <!-- Agregar pestaña DGII -->
+            <xpath expr="//notebook" position="inside">
+                <page string="DGII - Información Fiscal" name="dgii_info"
+                      invisible="not vat and not is_company">
+                    <group>
+                        <group string="Validación RNC">
+                            <field name="vat"/>
+                            <field name="x_rnc_validado" readonly="1"/>
+                            <field name="x_rnc_ultima_actualizacion" readonly="1"
+                                   invisible="not x_rnc_ultima_actualizacion"/>
+                            <button name="action_validate_rnc" string="Validar RNC / Autocompletar"
+                                    type="object" class="btn-primary" primary="1"
+                                    invisible="not vat"
+                                    icon="fa-refresh"/>
+                        </group>
+                        <group string="Estado en DGII">
+                            <field name="x_estado_dgii" readonly="1"
+                                   decoration-success="x_estado_dgii == 'ACTIVO'"
+                                   decoration-danger="x_estado_dgii and x_estado_dgii != 'ACTIVO'"/>
+                            <field name="x_facturador_electronico" readonly="1"/>
+                        </group>
+                    </group>
+
+                    <group>
+                        <group string="Información Comercial">
+                            <field name="x_nombre_comercial" readonly="1"/>
+                            <field name="x_actividad_economica" readonly="1"/>
+                        </group>
+                        <group string="Información Administrativa">
+                            <field name="x_regimen_pagos" readonly="1"/>
+                            <field name="x_admin_local" readonly="1"/>
+                        </group>
+                    </group>
+
+                    <group>
+                        <group string="Ubicación DGII">
+                            <field name="x_dgii_municipio"
+                                   placeholder="Ej: 010100"/>
+                            <field name="x_dgii_provincia"
+                                   placeholder="Ej: 010000"/>
+                        </group>
+                        <group string="Pagos al Exterior (Tipo 47)">
+                            <field name="x_dgii_identificador_extranjero"
+                                   placeholder="ID extranjero"/>
+                            <field name="x_dgii_pais_destino"
+                                   placeholder="Ej: ESTADOS UNIDOS"/>
+                        </group>
+                    </group>
+
+                    <group string="Directorio e-CF" invisible="not x_dgii_directorio_validado">
+                        <group>
+                            <field name="x_dgii_url_recepcion" readonly="1" widget="url"/>
+                            <field name="x_dgii_url_aceptacion" readonly="1" widget="url"/>
+                            <field name="x_dgii_url_opcional" readonly="1" widget="url"/>
+                        </group>
+                        <group>
+                            <field name="x_dgii_directorio_validado" readonly="1"/>
+                            <field name="x_dgii_directorio_ultima_actualizacion" readonly="1"/>
+                        </group>
+                    </group>
+
+                    <div class="alert alert-info" role="alert"
+                         invisible="x_rnc_validado">
+                        <p><strong>ℹ️ Flujo Automático de Validación de RNC</strong></p>
+                        <p><strong>Paso 1:</strong> En la pestaña principal, ingrese el RNC en "Identificación Fiscal"</p>
+                        <p><strong>Paso 2:</strong> El nombre se llenará automáticamente con "RNC: [número]" (temporal)</p>
+                        <p><strong>Paso 3:</strong> Haga clic en "🔍 Autocompletar desde DGII"</p>
+                        <p><strong>Paso 4:</strong> El sistema consultará DGII y actualizará:</p>
+                        <ul>
+                            <li>✓ Nombre oficial (reemplaza el temporal)</li>
+                            <li>✓ Nombre comercial</li>
+                            <li>✓ Actividad económica</li>
+                            <li>✓ Régimen de pagos y estado DGII</li>
+                        </ul>
+                        <p><em>💡 No ingrese el nombre manualmente, el sistema lo obtiene automáticamente de DGII.</em></p>
+                    </div>
+
+                    <div class="alert alert-success" role="alert"
+                         invisible="not x_rnc_validado or x_estado_dgii != 'ACTIVO'">
+                        <p><strong>✓ RNC Validado Correctamente</strong></p>
+                        <p>Este contribuyente está activo en DGII.</p>
+                        <p invisible="x_facturador_electronico != 'SI'">
+                            <strong>✓ Es Facturador Electrónico</strong>
+                        </p>
+                    </div>
+
+                    <div class="alert alert-warning" role="alert"
+                         invisible="not x_rnc_validado or x_estado_dgii == 'ACTIVO' or not x_estado_dgii">
+                        <p><strong>⚠️ Advertencia: Estado no Activo</strong></p>
+                        <p>Este contribuyente tiene estado "<field name="x_estado_dgii" nolabel="1" readonly="1"/>" en DGII.</p>
+                        <p>Verifique antes de realizar operaciones comerciales.</p>
+                    </div>
+                </page>
+            </xpath>
+
+            <!-- Indicador visual en el campo VAT si está validado -->
+            <xpath expr="//field[@name='vat']" position="attributes">
+                <attribute name="decoration-success">x_rnc_validado == True</attribute>
+            </xpath>
+
+            <!-- Hacer el nombre opcional y con placeholder cuando hay VAT -->
+            <xpath expr="//field[@name='name']" position="attributes">
+                <attribute name="required">False</attribute>
+                <attribute name="placeholder">Ingrese RNC en "Identificación Fiscal" - Se autocompletará automáticamente</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- ========== EXTENSIÓN VISTA DE LISTA ========== -->
+    <record id="view_res_partner_tree_dgii" model="ir.ui.view">
+        <field name="name">res.partner.tree.dgii</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+            <!-- Agregar columnas DGII opcionales -->
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="x_rnc_validado" optional="hide" widget="boolean_toggle"/>
+                <field name="x_estado_dgii" optional="hide"
+                       decoration-success="x_estado_dgii == 'ACTIVO'"
+                       decoration-danger="x_estado_dgii and x_estado_dgii != 'ACTIVO'"/>
+                <field name="x_facturador_electronico" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- ========== VISTA DE BÚSQUEDA EXTENDIDA ========== -->
+    <record id="view_res_partner_filter_dgii" model="ir.ui.view">
+        <field name="name">res.partner.filter.dgii</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+            <filter name="inactive" position="after">
+                <separator/>
+                <filter string="RNC Validado" name="rnc_validado"
+                        domain="[('x_rnc_validado', '=', True)]"/>
+                <filter string="RNC No Validado" name="rnc_no_validado"
+                        domain="[('vat', '!=', False), ('x_rnc_validado', '=', False)]"/>
+                <filter string="Facturador Electrónico" name="facturador_electronico"
+                        domain="[('x_facturador_electronico', '=', 'SI')]"/>
+                <filter string="Estado ACTIVO DGII" name="activo_dgii"
+                        domain="[('x_estado_dgii', '=', 'ACTIVO')]"/>
+            </filter>
+            <field name="name" position="after">
+                <field name="x_nombre_comercial" string="Nombre Comercial"
+                       filter_domain="[('x_nombre_comercial', 'ilike', self)]"/>
+                <field name="x_actividad_economica" string="Actividad Económica"
+                       filter_domain="[('x_actividad_economica', 'ilike', self)]"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- ========== MENÚ PARA CONTACTOS EN SECCIÓN DGII ========== -->
+    <menuitem id="menu_dgii_partners"
+              name="Contribuyentes"
+              parent="odoo_dgii_ecf.menu_dgii_operations"
+              action="base.action_partner_form"
+              sequence="20"/>
+</odoo>

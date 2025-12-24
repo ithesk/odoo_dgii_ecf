@@ -1,0 +1,188 @@
+{
+    "ECF" : {
+        "Encabezado": {
+            "Version": "1.0",
+            "IdDoc": {
+                "TipoeCF": "31",
+                "eNCF": "E310000000006",
+                "FechaVencimientoSecuencia": "31-12-2025",
+                "IndicadorMontoGravado": "0",
+                "TipoIngresos": "01",
+                "TipoPago": "1",
+                "TablaFormasPago": {
+                    "FormaDePago" : [
+                    {
+                        "FormaPago": 1,	
+                        "MontoPago": "228460.50"
+                    }]
+                }},
+            "Emisor":{
+                "RNCEmisor": "130939616",
+                "RazonSocialEmisor": "DOCUMENTOS ELECTRONICOS DE 02",
+                "NombreComercial": "DOCUMENTOS ELECTRONICOS DE 02",
+                "DireccionEmisor": "AVE. ISABEL AGUIAR NO. 269, ZONA INDUSTRIAL DE HERRERA",
+                "Municipio": "010100",
+                "Provincia": "010000",
+                "TablaTelefonoEmisor": {
+                    "TelefonoEmisor" : [
+                    "809-472-7676",
+                    "809-491-1918"]
+                },
+                "CorreoEmisor": "DOCUMENTOSELECTRONICOSDE0612345678969789+9000000000000000000000000000001@123.COM",
+                "WebSite": "www.facturaelectronica.com",
+                "CodigoVendedor": "AA0000000100000000010000000002000000000300000000050000000006",
+                "NumeroFacturaInterna": "123456789016",
+                "NumeroPedidoInterno": "123456789016",
+                "ZonaVenta": "NORTE",
+                "FechaEmision": "01-04-2020"},
+            "Comprador":{
+                "RNCComprador": "131880681",
+                "RazonSocialComprador": "DOCUMENTOS ELECTRONICOS DE 03",
+                "ContactoComprador": "MARCOS LATIPLOL",
+                "CorreoComprador": "MARCOSLATIPLOL@KKKK.COM",
+                "DireccionComprador": "CALLE JACINTO DE LA CONCHA FELIZ ESQUINA 27 DE FEBRERO,FRENTE A DOMINO",
+                "MunicipioComprador": "010100",
+                "ProvinciaComprador": "010000",
+                "FechaEntrega": "10-10-2020",
+                "FechaOrdenCompra": "10-11-2018",
+                "NumeroOrdenCompra": "4500352238",
+                "CodigoInternoComprador": "10633440"},
+            "Totales":{
+                "MontoGravadoTotal": "133975.00",
+                "MontoGravadoI1": "69975.00",
+                "MontoGravadoI2": "64000.00",
+                "MontoExento": "71650.00",
+                "ITBIS1": "18",
+                "ITBIS2": "16",
+                "TotalITBIS": "22835.50",
+                "TotalITBIS1": "12595.50",
+                "TotalITBIS2": "10240.00",
+                "MontoTotal": "228460.50",
+                "MontoPeriodo": "228460.50",
+                "ValorPagar": "228460.50"}},
+        "DetallesItems": {
+            "Item" : [
+            {
+                "NumeroLinea": 1,
+                "IndicadorFacturacion": 4,
+                "NombreItem": "ARROZ LA GARZA",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "20.00",
+                "UnidadMedida": "46",
+                "PrecioUnitarioItem": "1500.0000",
+                "MontoItem": "30000.00"
+            },
+            {
+                "NumeroLinea": 2,
+                "IndicadorFacturacion": 2,
+                "NombreItem": "AZUCAR CREMA",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "40.00",
+                "UnidadMedida": "46",
+                "PrecioUnitarioItem": "1300.0000",
+                "MontoItem": "52000.00"
+            },
+            {
+                "NumeroLinea": 3,
+                "IndicadorFacturacion": 1,
+                "NombreItem": "ESPAGUETIS MILANO",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "50.00",
+                "UnidadMedida": "14",
+                "PrecioUnitarioItem": "900.0000",
+                "MontoItem": "45000.00"
+            },
+            {
+                "NumeroLinea": 4,
+                "IndicadorFacturacion": 4,
+                "NombreItem": "LECHE MILEX",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "25.00",
+                "UnidadMedida": "47",
+                "PrecioUnitarioItem": "450.0000",
+                "MontoItem": "11250.00"
+            },
+            {
+                "NumeroLinea": 5,
+                "IndicadorFacturacion": 1,
+                "NombreItem": "SALSA LA FAMOSA",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "35.00",
+                "UnidadMedida": "47",
+                "PrecioUnitarioItem": "200.0000",
+                "MontoItem": "7000.00"
+            },
+            {
+                "NumeroLinea": 6,
+                "IndicadorFacturacion": 1,
+                "NombreItem": "GALLETAS SALADAS GUARINA",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "55.00",
+                "UnidadMedida": "14",
+                "PrecioUnitarioItem": "95.0000",
+                "MontoItem": "5225.00"
+            },
+            {
+                "NumeroLinea": 7,
+                "IndicadorFacturacion": 4,
+                "NombreItem": "SALAMI INDUVECA",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "60.00",
+                "UnidadMedida": "14",
+                "PrecioUnitarioItem": "115.0000",
+                "MontoItem": "6900.00"
+            },
+            {
+                "NumeroLinea": 8,
+                "IndicadorFacturacion": 1,
+                "NombreItem": "JUGO DE NARANJA RICA",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "65.00",
+                "UnidadMedida": "15",
+                "PrecioUnitarioItem": "100.0000",
+                "MontoItem": "6500.00"
+            },
+            {
+                "NumeroLinea": 9,
+                "IndicadorFacturacion": 1,
+                "NombreItem": "ACEITE CRISOL",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "25.00",
+                "UnidadMedida": "47",
+                "PrecioUnitarioItem": "250.0000",
+                "MontoItem": "6250.00"
+            },
+            {
+                "NumeroLinea": 10,
+                "IndicadorFacturacion": 4,
+                "NombreItem": "HUEVOS CASCARON",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "55.00",
+                "UnidadMedida": "20",
+                "PrecioUnitarioItem": "300.0000",
+                "MontoItem": "16500.00"
+            },
+            {
+                "NumeroLinea": 11,
+                "IndicadorFacturacion": 4,
+                "NombreItem": "MAIZ EL MAIZAL",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "20.00",
+                "UnidadMedida": "46",
+                "PrecioUnitarioItem": "350.0000",
+                "MontoItem": "7000.00"
+            },
+            {
+                "NumeroLinea": 12,
+                "IndicadorFacturacion": 2,
+                "NombreItem": "CAF¿ SANTO DOMINGO",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "30.00",
+                "UnidadMedida": "46",
+                "PrecioUnitarioItem": "400.0000",
+                "MontoItem": "12000.00"
+            }]
+        },
+        "FechaHoraFirma": "13-12-2025 16:17:40"
+    }
+}

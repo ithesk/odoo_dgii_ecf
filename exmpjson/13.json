@@ -1,0 +1,52 @@
+{
+    "ECF" : {
+        "Encabezado": {
+            "Version": "1.0",
+            "IdDoc": {
+                "TipoeCF": "32",
+                "eNCF": "E320000000013",
+                "IndicadorMontoGravado": "0",
+                "TipoIngresos": "01",
+                "TipoPago": "1"},
+            "Emisor":{
+                "RNCEmisor": "130939616",
+                "RazonSocialEmisor": "DOCUMENTOS ELECTRONICOS PRUEBA FACTURA DE CONSUMO MENOR 250MIL",
+                "NombreComercial": "DOCUMENTOS ELECTRONICOS",
+                "DireccionEmisor": "AVE. ISABEL AGUIAR NO. 269, ZONA INDUSTRIAL DE HERRERA",
+                "TablaTelefonoEmisor": {
+                    "TelefonoEmisor" : [
+                    "809-472-7676"]
+                },
+                "CorreoEmisor": "DOCUMENTOSELECTRONICOS@123.COM",
+                "FechaEmision": "01-04-2020"},
+            "Comprador":{
+                "RNCComprador": "131880681",
+                "RazonSocialComprador": "DOCUMENTOS ELECTRONICOS DE 03",
+                "CorreoComprador": "DOCUMENTOSELECTRONICOSDE0612345678969789@123.COM",
+                "DireccionComprador": "AVE. ISABEL AGUIAR NO. 269, ZONA INDUSTRIAL DE HERRERA",
+                "MunicipioComprador": "170203",
+                "ProvinciaComprador": "170000",
+                "TelefonoAdicional": "809-472-7676"},
+            "Totales":{
+                "MontoGravadoTotal": "95000.00",
+                "MontoGravadoI1": "95000.00",
+                "ITBIS1": "18",
+                "TotalITBIS": "17100.00",
+                "TotalITBIS1": "17100.00",
+                "MontoTotal": "112100.00"}},
+        "DetallesItems": {
+            "Item" : [
+            {
+                "NumeroLinea": 1,
+                "IndicadorFacturacion": 1,
+                "NombreItem": "Nevera",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "1",
+                "UnidadMedida": "55",
+                "PrecioUnitarioItem": "95000.00",
+                "MontoItem": "95000.00"
+            }]
+        },
+        "FechaHoraFirma": "13-12-2025 16:19:54"
+    }
+}

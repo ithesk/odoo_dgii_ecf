@@ -1,0 +1,40 @@
+{
+    "ECF" : {
+        "Encabezado": {
+            "Version": "1.0",
+            "IdDoc": {
+                "TipoeCF": "34",
+                "eNCF": "E340000000015",
+                "IndicadorNotaCredito": "0",
+                "TipoIngresos": "01",
+                "TipoPago": "1"},
+            "Emisor":{
+                "RNCEmisor": "130939616",
+                "RazonSocialEmisor": "DOCUMENTOS ELECTRONICOS DE 02",
+                "DireccionEmisor": "DOCUMENTOS ELECTRONICOS DE 02",
+                "FechaEmision": "02-04-2020"},
+            "Comprador":{
+                "RNCComprador": "131880681",
+                "RazonSocialComprador": "DOCUMENTOS ELECTRONICOS DE 02"},
+            "Totales":{
+                "MontoTotal": "0.00",
+                "MontoNoFacturable": "1.00"}},
+        "DetallesItems": {
+            "Item" : [
+            {
+                "NumeroLinea": 1,
+                "IndicadorFacturacion": 0,
+                "NombreItem": "SERVICIO PUBLICIDAD ACTUALIZADO",
+                "IndicadorBienoServicio": 2,
+                "CantidadItem": "1.00",
+                "PrecioUnitarioItem": "1.00",
+                "MontoItem": "1.00"
+            }]
+        },
+        "InformacionReferencia":{
+            "NCFModificado": "E410000000001",
+            "FechaNCFModificado": "01-04-2020",
+            "CodigoModificacion": "2"},
+        "FechaHoraFirma": "13-12-2025 17:36:39"
+    }
+}

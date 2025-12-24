@@ -1,0 +1,125 @@
+{
+    "ECF" : {
+        "Encabezado": {
+            "Version": "1.0",
+            "IdDoc": {
+                "TipoeCF": "46",
+                "eNCF": "E460000000011",
+                "FechaVencimientoSecuencia": "31-12-2025",
+                "TipoIngresos": "01",
+                "TipoPago": "1",
+                "TablaFormasPago": {
+                    "FormaDePago" : [
+                    {
+                        "FormaPago": 1,	
+                        "MontoPago": "1086.00"
+                    }]
+                }},
+            "Emisor":{
+                "RNCEmisor": "130939616",
+                "RazonSocialEmisor": "DOCUMENTOS ELECTRONICOS DE 02",
+                "NombreComercial": "DOCUMENTOS ELECTRONICOS DE 02",
+                "DireccionEmisor": "AVE. ISABEL AGUIAR NO. 269, ZONA INDUSTRIAL DE HERRERA",
+                "Municipio": "010100",
+                "Provincia": "010000",
+                "TablaTelefonoEmisor": {
+                    "TelefonoEmisor" : [
+                    "809-472-7676",
+                    "809-491-1918"]
+                },
+                "CorreoEmisor": "DOCUMENTOSELECTRONICOSDE0612345678969789+9000000000000000000000000000001@123.COM",
+                "WebSite": "www.facturaelectronica.com",
+                "CodigoVendedor": "AA0000000100000000010000000002000000000300000000050000000006",
+                "NumeroFacturaInterna": "123456789016",
+                "NumeroPedidoInterno": "123456789016",
+                "ZonaVenta": "NORTE",
+                "FechaEmision": "01-04-2020"},
+            "Comprador":{
+                "IdentificadorExtranjero": "350555123",
+                "RazonSocialComprador": "DOCUMENTOS ELECTRONICOS DE 03",
+                "ContactoComprador": "MARCOS LATIPLOL",
+                "CorreoComprador": "MARCOSLATIPLOL@KKKK.COM",
+                "DireccionComprador": "CALLE JACINTO DE LA CONCHA FELIZ ESQUINA 27 DE FEBRERO,FRENTE A DOMINO"},
+            "Totales":{
+                "MontoGravadoTotal": "1086.00",
+                "MontoGravadoI3": "1086.00",
+                "ITBIS3": "0",
+                "TotalITBIS": "0.00",
+                "TotalITBIS3": "0.00",
+                "MontoTotal": "1086.00",
+                "MontoPeriodo": "1086.00",
+                "ValorPagar": "1086.00"}},
+        "DetallesItems": {
+            "Item" : [
+            {
+                "NumeroLinea": 1,
+                    "TablaCodigosItem": {
+                        "CodigosItem" : [
+                        {
+                            "TipoCodigo": "Interno",	
+                            "CodigoItem": "1521"
+                        }]
+                    },
+                "IndicadorFacturacion": 3,
+                "NombreItem": "Gouda Import",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "1.00",
+                "UnidadMedida": "23",
+                "PrecioUnitarioItem": "179.0000",
+                "MontoItem": "179.00"
+            },
+            {
+                "NumeroLinea": 2,
+                    "TablaCodigosItem": {
+                        "CodigosItem" : [
+                        {
+                            "TipoCodigo": "Interno",	
+                            "CodigoItem": "1521"
+                        }]
+                    },
+                "IndicadorFacturacion": 3,
+                "NombreItem": "Gouda Impor Lonja",
+                "IndicadorBienoServicio": 2,
+                "CantidadItem": "2.00",
+                "UnidadMedida": "23",
+                "PrecioUnitarioItem": "179.0000",
+                "MontoItem": "358.00"
+            },
+            {
+                "NumeroLinea": 3,
+                    "TablaCodigosItem": {
+                        "CodigosItem" : [
+                        {
+                            "TipoCodigo": "Interno",	
+                            "CodigoItem": "1521"
+                        }]
+                    },
+                "IndicadorFacturacion": 3,
+                "NombreItem": "Bon Helado",
+                "IndicadorBienoServicio": 2,
+                "CantidadItem": "1.00",
+                "UnidadMedida": "43",
+                "PrecioUnitarioItem": "239.0000",
+                "MontoItem": "239.00"
+            },
+            {
+                "NumeroLinea": 4,
+                    "TablaCodigosItem": {
+                        "CodigosItem" : [
+                        {
+                            "TipoCodigo": "Interno",	
+                            "CodigoItem": "1521"
+                        }]
+                    },
+                "IndicadorFacturacion": 3,
+                "NombreItem": "Butterball pavo",
+                "IndicadorBienoServicio": 2,
+                "CantidadItem": "2.00",
+                "UnidadMedida": "43",
+                "PrecioUnitarioItem": "155.0000",
+                "MontoItem": "310.00"
+            }]
+        },
+        "FechaHoraFirma": "13-12-2025 17:43:15"
+    }
+}

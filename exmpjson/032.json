@@ -1,0 +1,160 @@
+{
+    "ECF" : {
+        "Encabezado": {
+            "Version": "1.0",
+            "IdDoc": {
+                "TipoeCF": "32",
+                "eNCF": "E320000000006",
+                "IndicadorMontoGravado": "0",
+                "TipoIngresos": "01",
+                "TipoPago": "1",
+                "TablaFormasPago": {
+                    "FormaDePago" : [
+                    {
+                        "FormaPago": 1,	
+                        "MontoPago": "413785.30"
+                    }]
+                }},
+            "Emisor":{
+                "RNCEmisor": "130939616",
+                "RazonSocialEmisor": "DOCUMENTOS ELECTRONICOS DE 02",
+                "NombreComercial": "DOCUMENTOS ELECTRONICOS DE 02",
+                "DireccionEmisor": "AVE. ISABEL AGUIAR NO. 269, ZONA INDUSTRIAL DE HERRERA",
+                "Municipio": "010100",
+                "Provincia": "010000",
+                "TablaTelefonoEmisor": {
+                    "TelefonoEmisor" : [
+                    "809-472-7676",
+                    "809-491-1918"]
+                },
+                "CorreoEmisor": "DOCUMENTOSELECTRONICOSDE0612345678969789+9000000000000000000000000000001@123.COM",
+                "WebSite": "www.facturaelectronica.com",
+                "CodigoVendedor": "AA0000000100000000010000000002000000000300000000050000000006",
+                "NumeroFacturaInterna": "123456789016",
+                "NumeroPedidoInterno": "123456789016",
+                "ZonaVenta": "NORTE",
+                "FechaEmision": "01-04-2020"},
+            "Comprador":{
+                "RNCComprador": "131880681",
+                "RazonSocialComprador": "DOCUMENTOS ELECTRONICOS DE 03",
+                "ContactoComprador": "MARCOS LATIPLOL",
+                "CorreoComprador": "MARCOSLATIPLOL@KKKK.COM",
+                "DireccionComprador": "CALLE JACINTO DE LA CONCHA FELIZ ESQUINA 27 DE FEBRERO,FRENTE A DOMINO",
+                "MunicipioComprador": "010100",
+                "ProvinciaComprador": "010000",
+                "FechaEntrega": "10-10-2020",
+                "FechaOrdenCompra": "10-11-2018",
+                "NumeroOrdenCompra": "4500352238",
+                "CodigoInternoComprador": "10633440"},
+            "Totales":{
+                "MontoGravadoTotal": "350765.00",
+                "MontoGravadoI1": "269805.00",
+                "MontoGravadoI2": "80190.00",
+                "MontoGravadoI3": "770.00",
+                "MontoExento": "1625.00",
+                "ITBIS1": "18",
+                "ITBIS2": "16",
+                "ITBIS3": "0",
+                "TotalITBIS": "61395.30",
+                "TotalITBIS1": "48564.90",
+                "TotalITBIS2": "12830.40",
+                "TotalITBIS3": "0.00",
+                "MontoTotal": "413785.30",
+                "MontoPeriodo": "413785.30",
+                "ValorPagar": "413785.30"}},
+        "DetallesItems": {
+            "Item" : [
+            {
+                "NumeroLinea": 1,
+                "IndicadorFacturacion": 1,
+                "NombreItem": "LAPICES",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "23.00",
+                "UnidadMedida": "43",
+                "PrecioUnitarioItem": "35.0000",
+                "MontoItem": "805.00"
+            },
+            {
+                "NumeroLinea": 2,
+                "IndicadorFacturacion": 2,
+                "NombreItem": "GALLETAS",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "547.00",
+                "UnidadMedida": "6",
+                "PrecioUnitarioItem": "145.0000",
+                "MontoItem": "79315.00"
+            },
+            {
+                "NumeroLinea": 3,
+                "IndicadorFacturacion": 3,
+                "NombreItem": "PAN",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "14.00",
+                "UnidadMedida": "31",
+                "PrecioUnitarioItem": "55.0000",
+                "MontoItem": "770.00"
+            },
+            {
+                "NumeroLinea": 4,
+                "IndicadorFacturacion": 4,
+                "NombreItem": "LECHE",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "25.00",
+                "UnidadMedida": "47",
+                "PrecioUnitarioItem": "65.0000",
+                "MontoItem": "1625.00"
+            },
+            {
+                "NumeroLinea": 5,
+                "IndicadorFacturacion": 2,
+                "NombreItem": "SALSA",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "35.00",
+                "UnidadMedida": "47",
+                "PrecioUnitarioItem": "25.0000",
+                "MontoItem": "875.00"
+            },
+            {
+                "NumeroLinea": 6,
+                "IndicadorFacturacion": 1,
+                "NombreItem": "TV LG 57\"",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "2.00",
+                "UnidadMedida": "43",
+                "PrecioUnitarioItem": "57000.0000",
+                "MontoItem": "114000.00"
+            },
+            {
+                "NumeroLinea": 7,
+                "IndicadorFacturacion": 1,
+                "NombreItem": "LAVADORA-SECADORA  WESTINGHOUSE",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "1.00",
+                "UnidadMedida": "43",
+                "PrecioUnitarioItem": "75000.0000",
+                "MontoItem": "75000.00"
+            },
+            {
+                "NumeroLinea": 8,
+                "IndicadorFacturacion": 1,
+                "NombreItem": "ESTUFA MABE",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "1.00",
+                "UnidadMedida": "43",
+                "PrecioUnitarioItem": "45000.0000",
+                "MontoItem": "45000.00"
+            },
+            {
+                "NumeroLinea": 9,
+                "IndicadorFacturacion": 1,
+                "NombreItem": "LAPICES",
+                "IndicadorBienoServicio": 1,
+                "CantidadItem": "1.00",
+                "UnidadMedida": "43",
+                "PrecioUnitarioItem": "35000.0000",
+                "MontoItem": "35000.00"
+            }]
+        },
+        "FechaHoraFirma": "13-12-2025 16:18:54"
+    }
+}

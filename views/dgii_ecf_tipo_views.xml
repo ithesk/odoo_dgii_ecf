@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ========== VISTA LISTA DE TIPOS E-CF ========== -->
+    <record id="view_dgii_ecf_tipo_list" model="ir.ui.view">
+        <field name="name">dgii.ecf.tipo.list</field>
+        <field name="model">dgii.ecf.tipo</field>
+        <field name="arch" type="xml">
+            <list string="Tipos de Comprobantes Fiscales Electrónicos"
+                  decoration-muted="not activo">
+                <field name="codigo"/>
+                <field name="name"/>
+                <field name="es_venta" widget="boolean_toggle"/>
+                <field name="es_compra" widget="boolean_toggle"/>
+                <field name="es_nota_credito" widget="boolean_toggle"/>
+                <field name="es_nota_debito" widget="boolean_toggle"/>
+                <field name="requiere_rnc" widget="boolean_toggle"/>
+                <field name="activo" widget="boolean_toggle"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ========== VISTA FORMULARIO DE TIPOS E-CF ========== -->
+    <record id="view_dgii_ecf_tipo_form" model="ir.ui.view">
+        <field name="name">dgii.ecf.tipo.form</field>
+        <field name="model">dgii.ecf.tipo</field>
+        <field name="arch" type="xml">
+            <form string="Tipo de Comprobante Fiscal Electrónico">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="toggle_active"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-check-square-o">
+                            <field name="activo" widget="boolean_button"/>
+                        </button>
+                    </div>
+
+                    <group>
+                        <group>
+                            <field name="codigo"/>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="requiere_rnc"/>
+                        </group>
+                    </group>
+
+                    <group string="Clasificación">
+                        <group>
+                            <field name="es_venta"/>
+                            <field name="es_compra"/>
+                        </group>
+                        <group>
+                            <field name="es_nota_credito"/>
+                            <field name="es_nota_debito"/>
+                        </group>
+                    </group>
+
+                    <group string="Descripción">
+                        <field name="descripcion" nolabel="1" placeholder="Descripción detallada del uso de este tipo de comprobante..."/>
+                    </group>
+
+                    <notebook>
+                        <page string="Diarios Asociados">
+                            <field name="journal_ids">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="type"/>
+                                    <field name="company_id" groups="base.group_multi_company"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- ========== ACCIÓN ========== -->
+    <record id="action_dgii_ecf_tipo" model="ir.actions.act_window">
+        <field name="name">Tipos de Comprobantes e-CF</field>
+        <field name="res_model">dgii.ecf.tipo</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Tipos de Comprobantes Fiscales Electrónicos DGII
+            </p>
+            <p>
+                Los tipos de comprobantes están precargados según la normativa DGII.
+                Puede configurar qué tipos puede emitir cada diario.
+            </p>
+        </field>
+    </record>
+
+    <!-- ========== MENÚ ========== -->
+    <menuitem id="menu_dgii_ecf_tipo"
+              name="Tipos e-CF"
+              parent="account.menu_finance_configuration"
+              action="action_dgii_ecf_tipo"
+              sequence="50"/>
+
+</odoo>

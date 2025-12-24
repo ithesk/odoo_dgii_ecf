@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ========== EXTENSIÓN VISTA FORMULARIO DE PRODUCTO ========== -->
+    <record id="view_product_template_form_dgii" model="ir.ui.view">
+        <field name="name">product.template.form.dgii</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <!-- Agregar pestaña DGII -->
+            <xpath expr="//page[@name='invoicing']" position="after">
+                <page string="DGII" name="dgii_info">
+                    <group>
+                        <group string="Clasificación DGII">
+                            <field name="x_dgii_bien_servicio" widget="radio"
+                                   options="{'horizontal': true}"/>
+                            <field name="x_dgii_unidad_medida"/>
+                        </group>
+                        <group string="Información">
+                            <div class="alert alert-info" role="alert">
+                                <p><strong>ℹ️ Configuración para Facturación Electrónica</strong></p>
+                                <p><strong>Tipo DGII:</strong> Indica si el producto es un bien físico (1) o un servicio (2).</p>
+                                <p><strong>Unidad Medida DGII:</strong> Código de unidad según catálogo DGII.</p>
+                                <p>Estos campos se usan en el e-CF al facturar.</p>
+                            </div>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- ========== EXTENSIÓN VISTA DE LISTA DE PRODUCTOS ========== -->
+    <record id="view_product_template_tree_dgii" model="ir.ui.view">
+        <field name="name">product.template.tree.dgii</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='type']" position="after">
+                <field name="x_dgii_bien_servicio" optional="hide" string="Tipo DGII"/>
+                <field name="x_dgii_unidad_medida" optional="hide" string="UM DGII"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ========== WIZARD CREAR NC e-CF (34) - SIMPLIFICADO ========== -->
+    <record id="view_create_credit_note_ecf_wizard_form" model="ir.ui.view">
+        <field name="name">account.move.create.credit.note.ecf.wizard.form</field>
+        <field name="model">account.move.create.credit.note.ecf.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Crear Nota de Crédito e-CF (34)">
+                <field name="currency_id" invisible="1"/>
+
+                <!-- Advertencias -->
+                <div invisible="not warning_message"
+                     class="alert alert-warning" role="alert">
+                    <field name="warning_message" readonly="1" nolabel="1"/>
+                </div>
+
+                <group>
+                    <!-- Información de la Factura Original -->
+                    <group string="Factura Original">
+                        <field name="ref_invoice_id" readonly="1"/>
+                        <field name="ref_invoice_encf"/>
+                        <field name="ref_invoice_date"/>
+                        <field name="ref_invoice_amount"/>
+                        <field name="partner_id"/>
+                    </group>
+
+                    <!-- Estado y Montos -->
+                    <group string="Información DGII">
+                        <field name="dias_transcurridos"/>
+                        <field name="indicador_nc"/>
+                        <field name="nc_existentes_amount"/>
+                        <field name="monto_disponible"/>
+                    </group>
+                </group>
+
+                <group string="Datos de la Nota de Crédito">
+                    <group>
+                        <field name="tipo_nc" widget="radio"/>
+                    </group>
+                    <group>
+                        <field name="codigo_modificacion"/>
+                    </group>
+                </group>
+
+                <group>
+                    <field name="razon_modificacion" placeholder="Describa el motivo de la Nota de Crédito..."/>
+                </group>
+
+                <!-- Mensaje informativo -->
+                <div invisible="tipo_nc != 'total'" class="alert alert-info" role="status">
+                    <strong>NC Total:</strong> Se copiarán todas las líneas de la factura original.
+                    La NC se creará y podrás confirmarla directamente.
+                </div>
+
+                <div invisible="tipo_nc != 'parcial'" class="alert alert-info" role="status">
+                    <strong>NC Parcial:</strong> Se creará una NC en borrador con todas las líneas.
+                    Podrás editar las cantidades o eliminar líneas antes de confirmar.
+                </div>
+
+                <footer>
+                    <button name="action_create_credit_note" string="Crear Nota de Crédito"
+                            type="object" class="btn-primary"/>
+                    <button string="Cancelar" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Acción del wizard -->
+    <record id="action_create_credit_note_ecf_wizard" model="ir.actions.act_window">
+        <field name="name">Crear NC e-CF (34)</field>
+        <field name="res_model">account.move.create.credit.note.ecf.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

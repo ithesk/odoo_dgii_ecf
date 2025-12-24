@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ========== EXTENSIÓN VISTA FORMULARIO DE DIARIO ========== -->
+    <record id="view_account_journal_form_dgii" model="ir.ui.view">
+        <field name="name">account.journal.form.dgii</field>
+        <field name="model">account.journal</field>
+        <field name="inherit_id" ref="account.view_account_journal_form"/>
+        <field name="arch" type="xml">
+            <!-- Agregar pestaña DGII después de las pestañas existentes -->
+            <notebook position="inside">
+                <page string="DGII - Facturación Electrónica" name="dgii_ecf">
+                    <group>
+                        <group string="Tipos de Comprobantes Fiscales Electrónicos">
+                            <field name="dgii_tipo_ecf_ids" widget="many2many_tags"
+                                   options="{'color_field': 'codigo'}"
+                                   placeholder="Seleccione los tipos de e-CF que puede emitir este diario..."/>
+                            <label for="dgii_tipo_ecf" class="text-muted"/>
+                            <div class="text-muted">
+                                <field name="dgii_tipo_ecf" readonly="1"/>
+                                <small>[Campo legacy - Use dgii_tipo_ecf_ids]</small>
+                            </div>
+                        </group>
+                        <group string="Identificación del Emisor">
+                            <field name="dgii_establecimiento"
+                                   placeholder="Ej: 001"/>
+                            <field name="dgii_punto_emision"
+                                   placeholder="Ej: 001"/>
+                        </group>
+                    </group>
+
+                    <div class="alert alert-info" role="alert" invisible="dgii_tipo_ecf_ids">
+                        <strong>Configuración Múltiple:</strong> Este diario puede emitir varios tipos de comprobantes.
+                        El sistema seleccionará automáticamente el tipo correcto según:
+                        <ul>
+                            <li>Si el cliente tiene RNC → Factura de Crédito Fiscal (31)</li>
+                            <li>Si el cliente NO tiene RNC → Factura de Consumo (32)</li>
+                            <li>Para notas de crédito → Automáticamente tipo 34</li>
+                            <li>Para notas de débito → Automáticamente tipo 33</li>
+                        </ul>
+                    </div>
+
+                    <group string="Rangos de Secuencias e-NCF Asociados"
+                           invisible="not dgii_tipo_ecf_ids and not dgii_tipo_ecf">
+                        <field name="dgii_ecf_range_ids" nolabel="1">
+                            <list>
+                                <field name="name"/>
+                                <field name="tipo_ecf"/>
+                                <field name="estado" decoration-success="estado == 'activo'"
+                                       decoration-danger="estado in ['agotado', 'vencido']"/>
+                                <field name="secuencias_disponibles"/>
+                                <field name="fecha_vencimiento"/>
+                            </list>
+                        </field>
+                    </group>
+
+                    <group string="Estadísticas">
+                        <field name="dgii_active_range_count" readonly="1"/>
+                    </group>
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+    <!-- ========== MENÚ PARA DIARIOS EN SECCIÓN DGII ========== -->
+    <menuitem id="menu_dgii_journals"
+              name="Diarios con e-CF"
+              parent="odoo_dgii_ecf.menu_dgii_config"
+              action="account.action_account_journal_form"
+              sequence="20"/>
+</odoo>

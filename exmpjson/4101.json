@@ -1,0 +1,67 @@
+{
+    "ECF" : {
+        "Encabezado": {
+            "Version": "1.0",
+            "IdDoc": {
+                "TipoeCF": "41",
+                "eNCF": "E410000000001",
+                "FechaVencimientoSecuencia": "31-12-2025",
+                "IndicadorMontoGravado": "0",
+                "TipoPago": "1",
+                "TablaFormasPago": {
+                    "FormaDePago" : [
+                    {
+                        "FormaPago": 1,	
+                        "MontoPago": "9000.00"
+                    }]
+                }},
+            "Emisor":{
+                "RNCEmisor": "130939616",
+                "RazonSocialEmisor": "DOCUMENTOS ELECTRONICOS DE 02",
+                "DireccionEmisor": "AVE. ISABEL AGUIAR NO. 269, ZONA INDUSTRIAL DE HERRERA",
+                "Municipio": "010101",
+                "Provincia": "010000",
+                "TablaTelefonoEmisor": {
+                    "TelefonoEmisor" : [
+                    "809-472-7676",
+                    "809-491-1918"]
+                },
+                "FechaEmision": "01-04-2020"},
+            "Comprador":{
+                "RNCComprador": "131880681",
+                "RazonSocialComprador": "DOCUMENTOS ELECTRONICOS DE 02",
+                "CorreoComprador": "MARCOSLATIPLOL@KKKK.COM",
+                "DireccionComprador": "CALLE JACINTO DE LA CONCHA FELIZ ESQUINA 27 DE FEBRERO,FRENTE A DOMINO",
+                "MunicipioComprador": "010100",
+                "ProvinciaComprador": "010000"},
+            "Totales":{
+                "MontoGravadoTotal": "10000.00",
+                "MontoGravadoI1": "10000.00",
+                "ITBIS1": "18",
+                "TotalITBIS": "1800.00",
+                "TotalITBIS1": "1800.00",
+                "MontoTotal": "11800.00",
+                "ValorPagar": "11800.00",
+                "TotalITBISRetenido": "1800.00",
+                "TotalISRRetencion": "1000.00"}},
+        "DetallesItems": {
+            "Item" : [
+            {
+                "NumeroLinea": 1,
+                "IndicadorFacturacion": 1,
+                    "Retencion":{
+                        "IndicadorAgenteRetencionoPercepcion": 1,
+                        "MontoITBISRetenido": "1800.00",
+                        "MontoISRRetenido": "1000.00"},
+                "NombreItem": "SERVICIO PUBLICIDAD",
+                "IndicadorBienoServicio": 2,
+                "DescripcionItem": "LOREM IPSUM DOLOR SITI AMET, CONSECTETUR ADIPISCI IT. VESTIBULUM 1234 FERMENTUM E-X, CONSEQUAT (IACULIS) ARCU. PELLENTESQUE RUTRUM DUI EGET SAPIEN DICTUM, EU MOLLIS LECTUS AUCTOR. NUNC ORNARE ERAT QUIS NISL IMPERDIET PORTA. NULLAM VEL PHARETRA LEO, PELLENTESQUE FERMENTUM LECTUS. VIVAMUS ORCI IPSUM, SCELERISQUE QUIS VEHICULA QUIS, TEMPUS VITAE PURUS. ALIQUAM SAGITTIS EROS VITAE ANTE FAUCIBUS AUCTOR. MAECENAS PELLENTESQUE VEL EST IN CONGUE. FUSCE ARCU LIGULA, HENDRERIT EU DOLOR A, FACILISIS GRAVIDA DOLOR. PELLENTESQUE SED ALIQUET DOLOR. MAURIS BIBENDUM VEHICULA DICTUM. ETIAM TEMPUS, ODIO NEC CONSECTETUR IACULIS, ODIO NIBH EGESTAS FELIS, SED VIVERRA MAGNA EX SUSCIPIT AUGUE. PELLENTESQUE VESTIBULUM, LACUS NON MATTIS MOLESTIE, NEQUE LEO FACILISIS URNA, AC SUSCIPIT ERAT NISI ET MAGNA. PRAESENT PLACERAT SED LEO A GRAVIDA. MORBI ID ELIT LACUS. CLASS APTENT TACITI SOCIOSQU AD LITORA TORQUENT PER CONUBIA NOSTRA, PER INCEPTOS HIMENAEOS, CONSECTETUR ADIPISCING ELIT. NUNC ORNARE ERAT QUIS NISL IMP.",
+                "CantidadItem": "1.00",
+                "UnidadMedida": "43",
+                "PrecioUnitarioItem": "10000.00",
+                "MontoItem": "10000.00"
+            }]
+        },
+        "FechaHoraFirma": "13-12-2025 17:38:40"
+    }
+}

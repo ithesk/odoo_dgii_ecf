@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ============================================= -->
+    <!-- VISTAS DE CRÉDITOS DE NC (l10n_do.ecf_credit) -->
+    <!-- ============================================= -->
+
+    <!-- Vista Tree -->
+    <record id="view_ecf_credit_tree" model="ir.ui.view">
+        <field name="name">l10n_do.ecf_credit.tree</field>
+        <field name="model">l10n_do.ecf_credit</field>
+        <field name="arch" type="xml">
+            <list string="Créditos de NC">
+                <field name="encf"/>
+                <field name="partner_id"/>
+                <field name="credit_move_id"/>
+                <field name="amount_total" sum="Total"/>
+                <field name="amount_available" sum="Disponible"/>
+                <field name="amount_applied" sum="Aplicado"/>
+                <field name="state" widget="badge" decoration-success="state == 'available'" decoration-warning="state == 'partial'" decoration-muted="state in ('consumed', 'void')"/>
+                <field name="date_created"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Vista Form -->
+    <record id="view_ecf_credit_form" model="ir.ui.view">
+        <field name="name">l10n_do.ecf_credit.form</field>
+        <field name="model">l10n_do.ecf_credit</field>
+        <field name="arch" type="xml">
+            <form string="Crédito de NC">
+                <header>
+                    <button name="action_void" string="Anular Crédito" type="object"
+                            class="btn-secondary"
+                            invisible="state == 'void' or amount_applied > 0"
+                            confirm="¿Está seguro de anular este crédito? Esta acción no se puede deshacer."/>
+                    <field name="state" widget="statusbar" statusbar_visible="available,partial,consumed"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_applications" type="object"
+                                class="oe_stat_button" icon="fa-list">
+                            <field name="application_count" widget="statinfo" string="Aplicaciones"/>
+                        </button>
+                        <button name="action_view_credit_note" type="object"
+                                class="oe_stat_button" icon="fa-file-text-o">
+                            <span class="o_stat_text">Ver NC</span>
+                        </button>
+                    </div>
+
+                    <div class="oe_title">
+                        <h1>
+                            <field name="encf" readonly="1"/>
+                        </h1>
+                    </div>
+
+                    <group>
+                        <group string="Información del Crédito">
+                            <field name="credit_move_id" readonly="1"/>
+                            <field name="partner_id" readonly="1"/>
+                            <field name="company_id" readonly="1" groups="base.group_multi_company"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                        <group string="Montos">
+                            <field name="amount_total" readonly="1"/>
+                            <field name="amount_available" readonly="1"/>
+                            <field name="amount_applied" readonly="1"/>
+                        </group>
+                    </group>
+
+                    <group>
+                        <group string="Fechas">
+                            <field name="date_created" readonly="1"/>
+                            <field name="date_expiry"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Aplicaciones" name="applications">
+                            <field name="application_ids" readonly="1">
+                                <list string="Aplicaciones">
+                                    <field name="invoice_move_id"/>
+                                    <field name="amount_applied" sum="Total"/>
+                                    <field name="date_applied"/>
+                                    <field name="user_id"/>
+                                    <field name="state" widget="badge" decoration-success="state == 'applied'" decoration-muted="state == 'reversed'"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vista Search -->
+    <record id="view_ecf_credit_search" model="ir.ui.view">
+        <field name="name">l10n_do.ecf_credit.search</field>
+        <field name="model">l10n_do.ecf_credit</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="encf"/>
+                <field name="partner_id"/>
+                <field name="credit_move_id"/>
+                <separator/>
+                <filter string="Disponibles" name="available" domain="[('state', '=', 'available')]"/>
+                <filter string="Parcialmente Usados" name="partial" domain="[('state', '=', 'partial')]"/>
+                <filter string="Consumidos" name="consumed" domain="[('state', '=', 'consumed')]"/>
+                <filter string="Anulados" name="void" domain="[('state', '=', 'void')]"/>
+                <separator/>
+                <filter string="Con Saldo" name="with_balance" domain="[('amount_available', '>', 0)]"/>
+                <separator/>
+                <filter string="Cliente" name="group_partner" domain="[]" context="{'group_by': 'partner_id'}"/>
+                <filter string="Estado" name="group_state" domain="[]" context="{'group_by': 'state'}"/>
+                <filter string="Fecha" name="group_date" domain="[]" context="{'group_by': 'date_created:month'}"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Acción para ver créditos -->
+    <record id="action_ecf_credit" model="ir.actions.act_window">
+        <field name="name">Créditos de NC</field>
+        <field name="res_model">l10n_do.ecf_credit</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_ecf_credit_search"/>
+        <field name="context">{'search_default_with_balance': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No hay créditos de NC registrados
+            </p>
+            <p>
+                Los créditos se crean automáticamente cuando una Nota de Crédito
+                tipo 34 es aceptada por DGII.
+            </p>
+        </field>
+    </record>
+
+    <!-- ================================================= -->
+    <!-- VISTAS DE APLICACIONES (l10n_do.ecf_credit_application) -->
+    <!-- ================================================= -->
+
+    <!-- Vista Tree -->
+    <record id="view_ecf_credit_application_tree" model="ir.ui.view">
+        <field name="name">l10n_do.ecf_credit_application.tree</field>
+        <field name="model">l10n_do.ecf_credit_application</field>
+        <field name="arch" type="xml">
+            <list string="Aplicaciones de Crédito">
+                <field name="credit_id" string="Nota de Crédito"/>
+                <field name="invoice_move_id" string="Factura"/>
+                <field name="partner_id"/>
+                <field name="amount_applied" sum="Total"/>
+                <field name="date_applied"/>
+                <field name="user_id"/>
+                <field name="state" widget="badge" decoration-success="state == 'applied'" decoration-muted="state == 'reversed'"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Vista Form -->
+    <record id="view_ecf_credit_application_form" model="ir.ui.view">
+        <field name="name">l10n_do.ecf_credit_application.form</field>
+        <field name="model">l10n_do.ecf_credit_application</field>
+        <field name="arch" type="xml">
+            <form string="Aplicación de Crédito">
+                <header>
+                    <button name="action_reverse" string="Revertir" type="object"
+                            class="btn-secondary"
+                            invisible="state == 'reversed'"
+                            confirm="¿Está seguro de revertir esta aplicación? El saldo volverá al crédito original."/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_credit" type="object"
+                                class="oe_stat_button" icon="fa-credit-card">
+                            <span class="o_stat_text">Ver Crédito</span>
+                        </button>
+                        <button name="action_view_invoice" type="object"
+                                class="oe_stat_button" icon="fa-file-text-o">
+                            <span class="o_stat_text">Ver Factura</span>
+                        </button>
+                    </div>
+
+                    <group>
+                        <group string="Crédito">
+                            <field name="credit_id" readonly="1"/>
+                            <field name="credit_encf" readonly="1"/>
+                        </group>
+                        <group string="Factura">
+                            <field name="invoice_move_id" readonly="1"/>
+                            <field name="invoice_encf" readonly="1"/>
+                        </group>
+                    </group>
+
+                    <group>
+                        <group string="Aplicación">
+                            <field name="amount_applied" readonly="1"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="partner_id" readonly="1"/>
+                        </group>
+                        <group string="Auditoría">
+                            <field name="date_applied" readonly="1"/>
+                            <field name="user_id" readonly="1"/>
+                            <field name="date_reversed" readonly="1" invisible="state != 'reversed'"/>
+                            <field name="reversed_by_id" readonly="1" invisible="state != 'reversed'"/>
+                        </group>
+                    </group>
+
+                    <group>
+                        <field name="notes"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vista Search -->
+    <record id="view_ecf_credit_application_search" model="ir.ui.view">
+        <field name="name">l10n_do.ecf_credit_application.search</field>
+        <field name="model">l10n_do.ecf_credit_application</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="credit_encf"/>
+                <field name="invoice_encf"/>
+                <field name="partner_id"/>
+                <separator/>
+                <filter string="Aplicados" name="applied" domain="[('state', '=', 'applied')]"/>
+                <filter string="Revertidos" name="reversed" domain="[('state', '=', 'reversed')]"/>
+                <separator/>
+                <filter string="Cliente" name="group_partner" domain="[]" context="{'group_by': 'partner_id'}"/>
+                <filter string="Estado" name="group_state" domain="[]" context="{'group_by': 'state'}"/>
+                <filter string="Fecha" name="group_date" domain="[]" context="{'group_by': 'date_applied:month'}"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Acción para ver aplicaciones -->
+    <record id="action_ecf_credit_application" model="ir.actions.act_window">
+        <field name="name">Aplicaciones de Crédito</field>
+        <field name="res_model">l10n_do.ecf_credit_application</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_ecf_credit_application_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No hay aplicaciones de crédito registradas
+            </p>
+            <p>
+                Las aplicaciones se registran cuando se usa un crédito de NC
+                para pagar una factura.
+            </p>
+        </field>
+    </record>
+
+</odoo>

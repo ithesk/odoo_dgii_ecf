@@ -1,0 +1,128 @@
+{
+    "ECF" : {
+        "Encabezado": {
+            "Version": "1.0",
+            "IdDoc": {
+                "TipoeCF": "47",
+                "eNCF": "E470000000011",
+                "FechaVencimientoSecuencia": "31-12-2025",
+                "TipoPago": "1",
+                "TablaFormasPago": {
+                    "FormaDePago" : [
+                    {
+                        "FormaPago": 1,	
+                        "MontoPago": "332770.00"
+                    }]
+                }},
+            "Emisor":{
+                "RNCEmisor": "130939616",
+                "RazonSocialEmisor": "DOCUMENTOS ELECTRONICOS DE 02",
+                "NombreComercial": "DOCUMENTOS ELECTRONICOS DE 02",
+                "DireccionEmisor": "AVE. ISABEL AGUIAR NO. 269, ZONA INDUSTRIAL DE HERRERA",
+                "Municipio": "010100",
+                "Provincia": "010000",
+                "TablaTelefonoEmisor": {
+                    "TelefonoEmisor" : [
+                    "809-472-7676",
+                    "809-491-1918"]
+                },
+                "CorreoEmisor": "DOCUMENTOSELECTRONICOSDE0612345678969789+9000000000000000000000000000001@123.COM",
+                "WebSite": "www.facturaelectronica.com",
+                "NumeroFacturaInterna": "123456789016",
+                "NumeroPedidoInterno": "123456789016",
+                "FechaEmision": "01-04-2020"},
+            "Comprador":{
+                "IdentificadorExtranjero": "350555123",
+                "RazonSocialComprador": "DOCUMENTOS ELECTRONICOS DE 03"},
+            "Totales":{
+                "MontoExento": "332770.00",
+                "MontoTotal": "332770.00",
+                "MontoPeriodo": "332770.00",
+                "ValorPagar": "332770.00",
+                "TotalISRRetencion": "89847.90"}},
+        "DetallesItems": {
+            "Item" : [
+            {
+                "NumeroLinea": 1,
+                    "TablaCodigosItem": {
+                        "CodigosItem" : [
+                        {
+                            "TipoCodigo": "Interno",	
+                            "CodigoItem": "1521"
+                        }]
+                    },
+                "IndicadorFacturacion": 4,
+                    "Retencion":{
+                        "IndicadorAgenteRetencionoPercepcion": 1,
+                        "MontoISRRetenido": "31050.00"},
+                "NombreItem": "Asesoria contable",
+                "IndicadorBienoServicio": 2,
+                "CantidadItem": "1.00",
+                "UnidadMedida": "43",
+                "PrecioUnitarioItem": "115000.0000",
+                "MontoItem": "115000.00"
+            },
+            {
+                "NumeroLinea": 2,
+                    "TablaCodigosItem": {
+                        "CodigosItem" : [
+                        {
+                            "TipoCodigo": "Interno",	
+                            "CodigoItem": "1521"
+                        }]
+                    },
+                "IndicadorFacturacion": 4,
+                    "Retencion":{
+                        "IndicadorAgenteRetencionoPercepcion": 1,
+                        "MontoISRRetenido": "42660.00"},
+                "NombreItem": "Software",
+                "IndicadorBienoServicio": 2,
+                "CantidadItem": "2.00",
+                "UnidadMedida": "43",
+                "PrecioUnitarioItem": "79000.0000",
+                "MontoItem": "158000.00"
+            },
+            {
+                "NumeroLinea": 3,
+                    "TablaCodigosItem": {
+                        "CodigosItem" : [
+                        {
+                            "TipoCodigo": "Interno",	
+                            "CodigoItem": "1521"
+                        }]
+                    },
+                "IndicadorFacturacion": 4,
+                    "Retencion":{
+                        "IndicadorAgenteRetencionoPercepcion": 1,
+                        "MontoISRRetenido": "6474.60"},
+                "NombreItem": "Soporte Tecnico",
+                "IndicadorBienoServicio": 2,
+                "CantidadItem": "1.00",
+                "UnidadMedida": "43",
+                "PrecioUnitarioItem": "23980.0000",
+                "MontoItem": "23980.00"
+            },
+            {
+                "NumeroLinea": 4,
+                    "TablaCodigosItem": {
+                        "CodigosItem" : [
+                        {
+                            "TipoCodigo": "Interno",	
+                            "CodigoItem": "1521"
+                        }]
+                    },
+                "IndicadorFacturacion": 4,
+                    "Retencion":{
+                        "IndicadorAgenteRetencionoPercepcion": 1,
+                        "MontoISRRetenido": "9663.30"},
+                "NombreItem": "Soporte Estrategico",
+                "IndicadorBienoServicio": 2,
+                "CantidadItem": "2.00",
+                "UnidadMedida": "43",
+                "PrecioUnitarioItem": "17895.0000",
+                "MontoItem": "35790.00"
+            }]
+        },
+        "FechaHoraFirma": "13-12-2025 17:43:55"
+    }
+}

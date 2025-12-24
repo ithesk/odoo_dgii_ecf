@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ============================================= -->
+    <!-- WIZARD: APLICAR CRÉDITO -->
+    <!-- ============================================= -->
+
+    <record id="view_apply_credit_wizard_form" model="ir.ui.view">
+        <field name="name">account.move.apply.credit.wizard.form</field>
+        <field name="model">account.move.apply.credit.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Aplicar Crédito de NC">
+                <group>
+                    <group string="Factura">
+                        <field name="invoice_id" readonly="1"/>
+                        <field name="invoice_encf" readonly="1"/>
+                        <field name="invoice_amount" readonly="1"/>
+                        <field name="invoice_residual" readonly="1"/>
+                        <field name="partner_id" readonly="1"/>
+                        <field name="currency_id" invisible="1"/>
+                        <field name="company_id" invisible="1"/>
+                    </group>
+                    <group string="Créditos Disponibles">
+                        <field name="available_credits_count" readonly="1"/>
+                        <field name="total_available" readonly="1"/>
+                    </group>
+                </group>
+
+                <group>
+                    <group string="Seleccionar Crédito">
+                        <field name="credit_id" options="{'no_create': True, 'no_open': True}"/>
+                        <field name="credit_encf" readonly="1"/>
+                        <field name="credit_available" readonly="1"/>
+                    </group>
+                    <group string="Monto a Aplicar">
+                        <field name="amount_to_apply"/>
+                    </group>
+                </group>
+
+                <footer>
+                    <button name="action_apply_credit" string="Aplicar Crédito"
+                            type="object" class="btn-primary"/>
+                    <button string="Cancelar" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Acción del wizard -->
+    <record id="action_apply_credit_wizard" model="ir.actions.act_window">
+        <field name="name">Aplicar Crédito</field>
+        <field name="res_model">account.move.apply.credit.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ========== EXTENSIÓN DEL WIZARD DE REVERSIÓN/NC ========== -->
+    <record id="view_account_move_reversal_dgii" model="ir.ui.view">
+        <field name="name">account.move.reversal.dgii</field>
+        <field name="model">account.move.reversal</field>
+        <field name="inherit_id" ref="account.view_account_move_reversal"/>
+        <field name="arch" type="xml">
+            <!-- Agregar campos DGII antes del campo reason -->
+            <xpath expr="//field[@name='reason']" position="before">
+                <!-- Advertencia si más de 30 días -->
+                <div invisible="not x_advertencia_30_dias"
+                     class="alert alert-warning" role="alert">
+                    <field name="x_advertencia_30_dias" readonly="1" nolabel="1"/>
+                </div>
+
+                <!-- Campos DGII solo para NC electrónicas -->
+                <field name="x_es_nc_electronica" invisible="1"/>
+                <field name="x_dias_desde_factura" invisible="1"/>
+
+                <field name="x_codigo_modificacion"
+                       invisible="not x_es_nc_electronica"
+                       required="x_es_nc_electronica"/>
+
+                <field name="x_indicador_nota_credito"
+                       invisible="not x_es_nc_electronica"
+                       readonly="1"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
